@@ -16,14 +16,13 @@ with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sor
 
 bad_algs = []
 for alg in algs:
-      
-      alg = alg + " "
-      print(alg)
-      print(alg.find("B2"))
-
-      if alg.find("B") >= 0:
-            bad_algs.append(alg.strip())
-      
+    alg = alg + " "
+    if alg.find("B") >= 0:
+        bad_algs.append(alg.strip())
+    elif alg.find("b") >= 0:
+        bad_algs.append(alg.strip())
+    elif alg.find("H") >= 0:
+          bad_algs.append(alg.strip())   
     
 
 print("\n\n\n")
