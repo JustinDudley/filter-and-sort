@@ -13,7 +13,7 @@ Y' U' D' F U D l' B2 D2 l' D U B l2 U2 F l2
 Y' B2 R' U D F l2 D2 B R2 D' U' L D U F' U2
 Y' B2 R' U D F R2 U2 F l2 D' U' L D U F' U2
 Y' B2 l' B F U R2 B2 U R2 B' F' r D U F' U2
-F' r D U F' U2
+F' r D U F' U2 T L
 Y' B2 L' D2 B2 L' U' D' B l2 U2 F D' U' L' D U
 Y' B2 r' B2 U2 r' D' U' F R2 U2 F D' U' L' D U
 Y' B2 r' B2 U2 L' F' B' U R2 B2 U F' B' r' D U

@@ -6,6 +6,8 @@
 
 import datetime
 
+from methods.is_bad_pattern_when_capitalized import is_bad_pattern_when_capitalized
+
 startTime = datetime.datetime.now() # to monitor performance of program
 
 
@@ -22,13 +24,20 @@ for alg in algs:
     elif alg.find("b") >= 0:
         bad_algs.append(alg.strip())
     elif alg.find("H") >= 0:
-          bad_algs.append(alg.strip())   
+        bad_algs.append(alg.strip())
+    elif alg.find("S2") >= 0:
+        bad_algs.append(alg.strip())
+    
+
+    if is_bad_pattern_when_capitalized(alg):
+        bad_algs.append(alg.strip())
+    
     
 
 print("\n\n\n")
 for alg in bad_algs:
-       print("bad_alg: ", alg)
-
+    #    print("bad_alg: ", alg)
+    pass
 
 
 filtered_algs = []
