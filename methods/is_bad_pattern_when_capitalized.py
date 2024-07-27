@@ -10,10 +10,7 @@ def is_bad_pattern_when_capitalized(alg):
 
     print(alg)
 
-    #TX, XT, TY, YT, TZ, Zt are trickier because WCR ARE okay at the beginning or end with a T
-
-
-
+    #TX, XT, TY, YT, TZ, Zt are trickier because WCR ARE okay at the beginning or end with a T.   Same for S-turns
 
     for bad_pattern in ["HT", "TH", "DT", "TD", "FT", "TF", "ST", "TS", "BT", "TB"]:    # left out RT, TR, LT, TL because their presence would indicate a larger problem, one that I'd like to know about
         if alg.find(bad_pattern) >= 0:
