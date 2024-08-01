@@ -1,3 +1,0 @@
-l S l' D2 L S' L' D2 L2 S' L2 Y0
-l S l' D2 L S' L' D2 r2 S r2 Y0
-U S' U2 S' U' r' U R' S' R U' r Y0 U2

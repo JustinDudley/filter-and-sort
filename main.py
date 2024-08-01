@@ -1,14 +1,20 @@
 # with some trepidation, I begin a third project
-# I know that "doing things the right way" is best, but at least for a moment, I'm going to forger ahead
+# I know that "doing things the right way" is best, but at least for a moment, I'm going to forge ahead
 # and try to get this job done!
 # It would be great to go ahead and develop all my "bad factors" ideas. But I'm just not sure it's necessary.
 
 
+
 import datetime
 
-from methods.is_bad_pattern_when_capitalized import is_bad_pattern_when_capitalized
+from methods.contains_bad_turns import contains_bad_turns
+from methods.contains_tri_turn import contains_tri_turn
+from methods.contains_T_not_in_UTU import contains_T_not_in_UTU
+from methods.contains_S_not_in_RSL import contains_S_not_in_RSL
+from methods.contains_internal_TY_or_TZ import contains_internal_TY_or_TZ
+from methods.contains_internal_SY_or_SZ import contains_internal_SY_or_SZ
 
-startTime = datetime.datetime.now() # to monitor performance of program
+startTime = datetime.datetime.now()  # to monitor performance of program
 
 
 
@@ -16,30 +22,52 @@ with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sor
     algs = file_input.read().splitlines() 
 
 
+#######
+# need to remove Y0 from the 81,000 algs!
+# AND reinstate the YorZ at end of alg.
+# So basically, I just need to run the program again and paste over the old data! 
+#######
+
+
+
+# Presumably I will be sorting in addition to filtering.
+# I can print to file BEFORE the sorting step if desired, if it helps for testing purposes.
+
+
+# Sorting:  Can put L,l at bottom, can put D at bottom
+# Internal YorZ should be WAY at bottom
+
+
+
 bad_algs = []
 for alg in algs:
-    alg = alg + " "
-    if alg.find("B") >= 0:
-        bad_algs.append(alg.strip())
-    elif alg.find("b") >= 0:
-        bad_algs.append(alg.strip())
-    elif alg.find("H") >= 0:
-        bad_algs.append(alg.strip())
-    elif alg.find("S2") >= 0:
-        bad_algs.append(alg.strip())
-    
 
-    if is_bad_pattern_when_capitalized(alg):
-        bad_algs.append(alg.strip())
+    alg = alg.strip()
+
+
+
+    if contains_bad_turns(alg):
+         bad_algs.append(alg)
+
+    if contains_tri_turn(alg):
+          bad_algs.append(alg)
+
+    if contains_T_not_in_UTU(alg):
+          bad_algs.append(alg)
     
+    if contains_S_not_in_RSL(alg):
+          bad_algs.append(alg)
     
+    if contains_internal_TY_or_TZ(alg):
+          bad_algs.append(alg)
+
+    if contains_internal_SY_or_SZ(alg):
+          bad_algs.append(alg)
+
+
+
 
 print("\n\n\n")
-for alg in bad_algs:
-    #    print("bad_alg: ", alg)
-    pass
-
-
 filtered_algs = []
 for alg in algs:
        if alg not in bad_algs:
