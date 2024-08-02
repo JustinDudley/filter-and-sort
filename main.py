@@ -49,6 +49,9 @@ for alg in algs:
     if contains_bad_turns(alg):
          bad_algs.append(alg)
 
+      # I should winnow  down original algs list each time so the program doesn't take so long to run
+      # or maybe not. It may be easier to test the program the way it is.
+      
     if contains_tri_turn(alg):
           bad_algs.append(alg)
 
