@@ -95,8 +95,6 @@ Y' D T B U F l' D' F L F' L' F' R' D' B
 Y' D T B U F R' B' D r F' L' F' R' D' B
 Y' D T B U F R' B' D L D' L' D' l' D' B
 Y' D T B U F l' D' F r U' r' F' R' D' B
-L' Z T D' l2 U r2 D S' U' F B R' B2 l2
-r' Y' T B' l2 F r2 B H F' D U l' B2 l2
 Z U' T D' l2 U L2 U S D' B F R' F2 R2
 Z U' T D' R2 D r2 U S D' B F R' F2 R2
 Z U' T D' R2 D L2 D S' U' F B R' B2 l2
@@ -116,7 +114,6 @@ B2 r' U S D2 U' B2 U' S U B2 D2 R B2
 B2 L' B H F2 B' D2 B' H B D2 F2 l B2
 B2 r' U' S' U D2 B2 U S' U' B2 D2 R B2
 B2 L' B' H' B F2 D2 B H' B' D2 F2 l B2
-B2 D B' L' F B2 R' H' F' R B U T' Z' B'
 u' l' F' R' H l U F D B2 F H' B2 F'
 Y' D' R' D' l' H l U F D B2 F H' B2 F'
 u' R' D' l' H l U F D B2 F H' B2 F'

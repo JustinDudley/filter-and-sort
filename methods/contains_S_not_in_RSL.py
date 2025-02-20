@@ -1,5 +1,8 @@
 
-def contains_S_not_in_RSL(alg):     # RSR is great, LSL is okay, LSR and RSL are permitted for now
+def contains_S_not_in_RSL(alg):   
+    
+    
+    # RSR is great, LSL is okay, LSR and RSL are permitted for now
 
     alg = alg.upper()
     for extra in [" ", "2", "'"]:
@@ -14,7 +17,4 @@ def contains_S_not_in_RSL(alg):     # RSR is great, LSL is okay, LSR and RSL are
 
 
     return False
-    
-   
-    # needs testing!!
 

@@ -1,5 +1,8 @@
 
-def contains_tri_turn(alg):    # Note:  Slice comps should never come into play. Alg-slice-and-widen has already removed them
+# Note:  Slice comps should never come into play. Alg-slice-and-widen has already removed them
+
+def contains_tri_turn(alg):   
+    
 
     alg = alg.upper()
     for extra in [" ", "2", "'"]:
