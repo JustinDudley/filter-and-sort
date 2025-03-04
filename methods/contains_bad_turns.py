@@ -1,7 +1,7 @@
 
 def contains_bad_turns(alg):  
 
-    for turn_letter in ["B", "b", "H", "S2"]:
+    for turn_letter in ["B", "b", "f2", "u2", "H", "S2"]:
         if alg.find(turn_letter) >= 0:
             return True
     

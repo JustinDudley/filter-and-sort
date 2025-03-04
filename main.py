@@ -14,7 +14,6 @@
 # Next, trailing YorZ
 # Next, algs containing u, d, f, or b [these should have no YorZ, right?]
 # Next, everything else [meaning no u,d,f,b, and contains internal YorZ]
-# SEE PYDROID. I wrote a quick sorting program there.
 
 
 
@@ -33,10 +32,12 @@
 
 import datetime
 
+from methods.sort_the_algs import sort_the_algs
 from methods.contains_bad_turns import contains_bad_turns
+from methods.contains_both_T_and_S import contains_both_T_and_S
 from methods.contains_tri_turn import contains_tri_turn
 from methods.contains_T_not_in_UTU import contains_T_not_in_UTU
-from methods.contains_S_not_in_RSL import contains_S_not_in_RSL
+from methods.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 
@@ -57,14 +58,17 @@ for alg in algs:
 
     if contains_bad_turns(alg):
          bad_algs.append(alg)
-      
+
+    if contains_both_T_and_S(alg):
+          bad_algs.append(alg)
+
     if contains_tri_turn(alg):
           bad_algs.append(alg)
 
     if contains_T_not_in_UTU(alg):
           bad_algs.append(alg)
     
-    if contains_S_not_in_RSL(alg):
+    if contains_S_not_in_LSr(alg):
           bad_algs.append(alg)
     
     if contains_internal_TY_or_ZT(alg):
@@ -83,6 +87,7 @@ for alg in algs:
               filtered_algs.append(alg)
 
 
+sorted_algs = sort_the_algs(filtered_algs)
        
 
 # WRITE TO FILE
@@ -91,6 +96,16 @@ output_filename = '/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter
 with open(output_filename, "x") as output_file:
 	for alg in filtered_algs:
 		output_file.write(f"{alg}\n")
+
+
+#new sorted file
+#new sorted file
+sorted_output_filename = '/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/OUTPUT_files/%s.txt'%(dt.strftime("%a") + "_" + dt.strftime("%I") + ":" + dt.strftime("%M") + ":" + dt.strftime("%S") + "_SORTED_output")
+with open(sorted_output_filename, "x") as sorted_output_file:
+	for alg in sorted_algs:
+		sorted_output_file.write(f"{alg}\n")
+#new sorted file
+#new sorted file
 
 
 
