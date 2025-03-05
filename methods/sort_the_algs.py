@@ -5,6 +5,16 @@ def sort_the_algs(algs):
     udbf_turns = ["u", "d", "b", "f"]
 
 
+    # this is called from within the sort below. Even though I don't obviously iterate through the algs, the 
+    # sort method does look at each alg, and calls this method
+    def calculate_alg_length(alg):
+        compacted_alg = alg.replace("'", "").replace("2", "").replace(" ", "").replace("Y","").replace("Z","")
+        alg_length = len(compacted_alg)
+       
+        return alg_length
+
+
+
 
 
     # The following method contains a block of 8 comma-separarted sort criteria. Order matters
@@ -13,13 +23,10 @@ def sort_the_algs(algs):
     # subdivisions (with and without S algs) should be to divide the algs neatly into the categories specified by 
     # the criteria
 
-    # I should refactor so that the return statement is at the bottom. more readable to me.
 
-    # rindex is breaking the program
 
-    def sort_them(algs):
-        return sorted(algs, key=lambda alg: (
 
+    sorted_algs = sorted(algs, key=lambda alg: (
         "S" not in alg,  # Yes, this was successful in getting ALL non-S algs at the top
         not any(turn in alg for turn in YorZ_turns) and not any(turn in alg for turn in udbf_turns), # alg has neither  Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision
         
@@ -29,12 +36,14 @@ def sort_the_algs(algs):
         
         alg[0] in udbf_turns,
         alg[len(alg)-1] == "u" or alg[len(alg)-2] == "u" or alg[len(alg)-1] == "d" or alg[len(alg)-2] == "d" or alg[len(alg)-1] == "b" or alg[len(alg)-2] == "b" or alg[len(alg)-1] == "f" or alg[len(alg)-2] == "f",  # Trailiing udbf.  Ooof! 
-        any(turn in alg for turn in udbf_turns) # The built-in 'any' function is used to check whether any members of a list are included in a given string
+        any(turn in alg for turn in udbf_turns), # The built-in 'any' function is used to check whether any members of a list are included in a given string
+
+        "T" not in alg,
+        "T'" not in alg,
+        "D" not in alg,
+
+        calculate_alg_length(alg)
 
         ), reverse = True)
-
-
-
-    sorted_algs = sort_them(algs)
 
     return sorted_algs
