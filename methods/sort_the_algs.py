@@ -17,7 +17,7 @@ def sort_the_algs(algs):
 
 
 
-    # The following method contains a block of 8 comma-separarted sort criteria. Order matters
+    # The following method contains a block of 13 comma-separared sort criteria. Order matters
     # The first one, for S algs, will divide all the algs into 2 groups (with and without S algs)
     # After this division, many of the remaining criteria are mutually exclusive, so the effect within each of the two 
     # subdivisions (with and without S algs) should be to divide the algs neatly into the categories specified by 
@@ -42,7 +42,8 @@ def sort_the_algs(algs):
         "T'" not in alg,
         "D" not in alg,
 
-        calculate_alg_length(alg)
+        100 - calculate_alg_length(alg),
+        "Y" in alg  # algs with Y above algs with Z, within each of the smallest divisions
 
         ), reverse = True)
 
