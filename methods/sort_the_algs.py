@@ -43,7 +43,33 @@ def sort_the_algs(algs):
         "D" not in alg,
 
         100 - calculate_alg_length(alg),
-        "Y" in alg  # algs with Y above algs with Z, within each of the smallest divisions
+        "Y" in alg,  # algs with Y above algs with Z, within each of the smallest divisions
+
+        # final micro-sort, starting with making the u,d,f,b regions cleaner...
+        "u" in alg,
+        "d" in alg,
+        "f" in alg,
+        "b" in alg,
+
+
+
+        #DIDN'T END UP SEEMING THAT USEFUL (BELOW)
+        #DIDN'T END UP SEEMING THAT USEFUL (BELOW)
+        # ... and then trying to put other things together with like things. Hopefully forcing many inverses to be next to each other
+        # "R2" in alg,
+        # "U2" in alg,
+        # "L2" in alg,
+        # "F2" in alg,
+        # "D2" in alg,
+        # "B2" in alg,
+        # "T2" in alg,
+
+        # "r2" in alg,
+        # "l2" in alg,
+        # "r" in alg,
+        # "l" in alg,
+        #DIDN'T END UP SEEMING THAT USEFUL (ABOVE)
+        #DIDN'T END UP SEEMING THAT USEFUL (ABOVE)
 
         ), reverse = True)
 

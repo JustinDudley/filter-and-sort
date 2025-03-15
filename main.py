@@ -1,7 +1,4 @@
 
-# Sorting:  Can put L,l at bottom, can put D at bottom
-
-
 import datetime
 
 from methods.sort_the_algs import sort_the_algs
