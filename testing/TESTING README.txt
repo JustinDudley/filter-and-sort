@@ -15,7 +15,10 @@ AND, I made a new test output file, that goes with the same input file I used th
 The new output file is called "KEEP__test_output_UPDATED_with_f2_u2_removed_and_also_T_with_S_removed"
 The new output file, as compared to the old one, can be seen to also remove f2 and T/S.  Unfortunately, the original input
 file didn't contain any u2, so that functionality is not reflected in the official test files. But I tested for u2 when
-I wrote that code.
+I wrote that code. ALSO, my addition of the SET functionality means that the ORDER of algs in 
+"KEEP__test_output_UPDATED_with_f2_u2_removed_and_also_T_with_S_removed" is completely different from the order of algs
+in "KEEP__test_output_orig".  So the DiffChecker website will look messy. But if you care to set the two files into an 
+excel file and look for unique values, you will see that the difference is: algs that contain both T and S, or that contain f2.
 ################
 
 

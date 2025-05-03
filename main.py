@@ -11,8 +11,7 @@ from methods.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 
 
-# The other branch of this repo is fully functional but SLOW
-# This branch takes 4 seconds to do what the other branch takes 7 hours to do
+# The other branch of this repo is fully functional but SLOW. (7 HOURS versus 9 SECONDS)
 # The hold up WASN'T in the filtering process. It was in comparing EACH of the 500,000 algs in algs to EACH of the 499,000 algs in bad_algs. Oops.
 
 
