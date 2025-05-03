@@ -10,6 +10,12 @@ from methods.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 
+
+# The other branch of this repo is fully functional but SLOW
+# This branch takes 4 seconds to do what the other branch takes 7 hours to do
+# The hold up WASN'T in the filtering process. It was in comparing EACH of the 500,000 algs in algs to EACH of the 499,000 algs in bad_algs. Oops.
+
+
 startTime = datetime.datetime.now()  # to monitor performance of program
 
 
@@ -48,13 +54,8 @@ for alg in algs:
 
 
 
-
-print("\n\n\n")
-filtered_algs = []
-for alg in algs:
-       if alg not in bad_algs:
-              filtered_algs.append(alg)
-
+filtered_algs_set = set(algs).difference(set(bad_algs))  # filtered_algs == everything in algs that isn't in bad_algs
+filtered_algs = list(filtered_algs_set)
 sorted_algs = sort_the_algs(filtered_algs)
        
 
@@ -75,4 +76,4 @@ with open(sorted_output_filename, "x") as sorted_output_file:
 
 
 
-print("time elapsed: ", datetime.datetime.now() - startTime)
+print("\ntime elapsed: ", datetime.datetime.now() - startTime, "\n\n")
