@@ -1,6 +1,8 @@
 
 import datetime
 
+from methods.pattern_and_group_and_kingdom_finder.find_group_and_kingdom import find_group_and_kingdom
+from methods.pattern_and_group_and_kingdom_finder.find_pattern import find_pattern
 from methods.sort_the_algs import sort_the_algs
 from methods.contains_bad_turns import contains_bad_turns
 from methods.contains_both_T_and_S import contains_both_T_and_S
@@ -16,10 +18,16 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 
 
 startTime = datetime.datetime.now()  # to monitor performance of program
-
-
 with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/INPUT_file/final_alg_list_input.txt") as file_input:
     algs = file_input.read().splitlines() 
+
+
+
+
+# NOTE:  only the FIRST ALG in the list is checked for isCornerAlg, group_number, and pattern !!!!   In my other app, alg-slice-and-widen, each of the hundreds of algs are identified. But this app here must process hundreds of thousands of algs, so I don't want the performance hit of checking each one.
+pattern = find_pattern(algs[0])
+group_number, isCornerAlg = find_group_and_kingdom(pattern)   # note destructuring syntax
+
 
 
 
