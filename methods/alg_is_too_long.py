@@ -13,9 +13,12 @@ def alg_is_too_long(alg, isCornerAlg, edgeAlgMaxLength, edgeAlg_with_S_turns_Max
             alg = alg.replace(uncounted_symbol, "")
         
         
+
+        # add too-long algs to the "bad" list
         if len(alg) > edgeAlgMaxLength:
             return True
         
+        # add too-long S algs to the "bad" list
         if "S" in alg and len(alg) > edgeAlg_with_S_turns_MaxLength:
             return True
 

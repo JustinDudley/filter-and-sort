@@ -14,24 +14,22 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods.alg_is_too_long import alg_is_too_long
 
 
-# The other branch of this repo is fully functional but SLOW. (7 HOURS versus 9 SECONDS)
-# The hold up WASN'T in the filtering process. It was in comparing EACH of the 500,000 algs in algs to EACH of the 499,000 algs in bad_algs. Oops.
 
-startTime = datetime.datetime.now()  # to monitor performance of program
-
-
-# BOOLEANS to be set for EACH RUN
-# BOOLEANS to be set for EACH RUN
-isAppFilteringByLength = False
+# CONFIGURATION    CONFIGURATION    CONFIGURATION
+# CONFIGURATION    CONFIGURATION    CONFIGURATION
+is_RL_allowed = True               # FALSE should be the default 
+isAppFilteringByLength = False      # FALSE should be the default
 edgeAlgMaxLength = 16
 edgeAlg_with_S_turns_MaxLength = 15
 if isAppFilteringByLength:
       print("\n Warning:  the app IS set to filter by length !!! \n")
-# BOOLEANS to be set for EACH RUN
-# BOOLEANS to be set for EACH RUN
+# CONFIGURATION    CONFIGURATION    CONFIGURATION
+# CONFIGURATION    CONFIGURATION    CONFIGURATION
 
 
 
+
+startTime = datetime.datetime.now()  # to monitor performance of program
 
 with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/INPUT_file/final_alg_list_input.txt") as file_input:
     algs = file_input.read().splitlines() 
@@ -59,7 +57,7 @@ for alg in algs:
     if contains_both_T_and_S(alg):
           bad_algs.append(alg)
 
-    if contains_tri_turn(alg):
+    if contains_tri_turn(alg, is_RL_allowed):
           bad_algs.append(alg)
 
     if contains_T_not_in_UTU(alg):
