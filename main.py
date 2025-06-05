@@ -1,6 +1,7 @@
 
 import datetime
 
+from methods.contains_RL_tri_turn_AND_Leading_X import contains_RL_tri_turn_AND_Leading_X
 from methods.pattern_and_group_and_kingdom_finder.find_group_and_kingdom import find_group_and_kingdom
 from methods.pattern_and_group_and_kingdom_finder.find_pattern import find_pattern
 from methods.sort_the_algs import sort_the_algs
@@ -14,11 +15,12 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods.alg_is_too_long import alg_is_too_long
 
 
-
+#    Managing tolerance level for unwieldy algs
+# CONFIGURATION    CONFIGURATION    CONFIGURATION  
 # CONFIGURATION    CONFIGURATION    CONFIGURATION
-# CONFIGURATION    CONFIGURATION    CONFIGURATION
-is_RL_allowed = True               # FALSE should be the default 
-isAppFilteringByLength = False      # FALSE should be the default
+is_RL_forbidden_everywhere = False                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
+is_RL_forbidden_for_Leading_X_algs = True             # TRUE should be the default.  The "forbidden_everywhere" boolean will override this if "forbidden_everywhere" is set to True. "Forbidden everywhere" paints with a broad stroke in its own method
+isAppFilteringByLength = True                         # TRUE should be the default
 edgeAlgMaxLength = 16
 edgeAlg_with_S_turns_MaxLength = 15
 if isAppFilteringByLength:
@@ -57,7 +59,10 @@ for alg in algs:
     if contains_both_T_and_S(alg):
           bad_algs.append(alg)
 
-    if contains_tri_turn(alg, is_RL_allowed):
+    if contains_tri_turn(alg, is_RL_forbidden_everywhere):
+          bad_algs.append(alg)
+
+    if contains_RL_tri_turn_AND_Leading_X(alg, is_RL_forbidden_for_Leading_X_algs):
           bad_algs.append(alg)
 
     if contains_T_not_in_UTU(alg):
