@@ -1,11 +1,13 @@
 TESTING README
 
-The first 180 algs in the input file were chosen carefully to demonstrate that the app could hit its marks. The rest are 
+The first 180 algs in the input file were chosen carefully to demonstrate that the app could hit its marks. Then there is 
 a random assortment of (1) algs I knew would survive filtering, and (2) just a bunch of algs that frankly will probably be 
-filtered out immediately because they contain B (and other stuff).
+filtered out immediately because they contain B (and other stuff). Finally, I put in a bunch of leading_X algs with and without 
+tri-turns (RL) to test the booleans.
 
 
-There are two test output files, one for when the boolean for length limit is set to False, one for True.
+There are 4 test_output files, each titled for choice of boolean in the MAIN file.
+
 
 
 The six original individual test files are out of date. But the program as a whole has been tested.
