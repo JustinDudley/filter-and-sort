@@ -1,6 +1,7 @@
 
 import datetime
 
+from methods.special_prohibitions_T_S_rL import special_prohibitions_T_S_rL
 from methods.contains_RL_tri_turn_AND_Leading_X import contains_RL_tri_turn_AND_Leading_X
 from methods.pattern_and_group_and_kingdom_finder.find_group_and_kingdom import find_group_and_kingdom
 from methods.pattern_and_group_and_kingdom_finder.find_pattern import find_pattern
@@ -15,16 +16,47 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods.alg_is_too_long import alg_is_too_long
 
 
+# Need new test output files, right???
+# Need new test output files, right???
+# Need new test output files, right???
+# Need new test output files, right???
+# Need new test output files, right???
+# Need new test output files, right???
+# Need new test output files, right???
+# Need new test output files, right???
+
+
+#CONFIGURATION BOOLEANS
+
+
 #    Managing tolerance level for unwieldy algs
 # CONFIGURATION    CONFIGURATION    CONFIGURATION  
 # CONFIGURATION    CONFIGURATION    CONFIGURATION
-is_RL_forbidden_everywhere = False                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
-is_RL_forbidden_for_Leading_X_algs = True             # TRUE should be the default.  The "forbidden_everywhere" boolean will override this if "forbidden_everywhere" is set to True. "Forbidden everywhere" paints with a broad stroke in its own method
+is_RL_forbidden_everywhere = True                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
+is_RL_forbidden_for_Leading_X_algs = False             # FALSE should be the default.  The "forbidden_everywhere" boolean will override this if "forbidden_everywhere" is set to True. "Forbidden everywhere" paints with a broad stroke in its own method
 isAppFilteringByLength = True                         # TRUE should be the default
 edgeAlgMaxLength = 16
 edgeAlg_with_S_turns_MaxLength = 15
 if isAppFilteringByLength:
       print("\n Warning:  the app IS set to filter by length !!! \n")
+
+
+
+# Specialty prohibitions: 
+# THESE ACTUALLY DO WORK FOR EDGE ALGS !!!  
+# # And yes, it doesn't affect the corner algs. Tested, yes
+# 
+# I probably need to eliminate 18 rL algs (applies to corners)
+# I'm going to need to change the test suite, or add something...
+#  
+# # THESE ACTUALLY DO WORK FOR EDGE ALGS !!!  
+# # And yes, it doesn't affect the corner algs. Tested, yes   
+is_T_rL_length16_notIsCornerAlg_forbidden_when_together = False  # EDGE algs with length 16 or greater that include T and rL are forbidden
+is_S_rL_length15_notIsCornerAlg_forbidden_when_together = False  # EDGE algs with length 15 or greater that include S and rL are forbidden
+
+# UNTESTED.  (Well, tested and failed, I think. Or broke the app. Or something)
+is_internalYorZ_rL_length18_IsCornerAlg_forbidden_when_together = False    # not used yet
+
 # CONFIGURATION    CONFIGURATION    CONFIGURATION
 # CONFIGURATION    CONFIGURATION    CONFIGURATION
 
@@ -53,6 +85,8 @@ for alg in algs:
 
 
 
+    # OBLIGATORY FILTERING
+
     if contains_bad_turns(alg):
          bad_algs.append(alg)
 
@@ -76,6 +110,16 @@ for alg in algs:
 
     if contains_internal_SY_or_ZS(alg):
           bad_algs.append(alg)
+
+
+      # COMING SOON -- CREATE ALG_DICT FOR EACH ALG DURING LOOP
+      # alg_attributes_dict = create_alg_attributes_dict(alg)   # Need to build out this method
+
+      # COMING SOON -- OPTIONAL FILTERING BASED ON CONFIGURATION BOOLEANS
+
+    if special_prohibitions_T_S_rL(alg, isCornerAlg, is_T_rL_length16_notIsCornerAlg_forbidden_when_together, is_S_rL_length15_notIsCornerAlg_forbidden_when_together):
+          bad_algs.append(alg)
+
 
     if isAppFilteringByLength:
           # can make and pass more booleans if more criteria are desired

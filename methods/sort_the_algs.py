@@ -1,23 +1,43 @@
 
+import copy
+
+
 def sort_the_algs(algs):
 
     YorZ_turns = ["Y", "Z"]
+    XorYorZ_turns = ["X", "Y", "Z"]
     udbf_turns = ["u", "d", "b", "f"]
 
 
-    # this is called from within the sort below. Even though I don't obviously iterate through the algs, the 
-    # sort method does look at each alg, and calls this method
     def calculate_alg_length(alg):
-        compacted_alg = alg.replace("'", "").replace("2", "").replace(" ", "").replace("Y","").replace("Z","")
+        compacted_alg = alg.replace("'", "").replace("2", "").replace(" ", "").replace("X","").replace("Y","").replace("Z","")
         alg_length = len(compacted_alg)
-       
         return alg_length
 
+    # def second_letter(alg):
+    #     substring_following_first_whitespace = " ".join(alg.split()[1:-1])
+    #     return substring_following_first_whitespace[0]
+
+    def final_letter(alg):
+        index_final_whitespace = alg.rfind(" ")
+        return alg[index_final_whitespace + 1]
+    
+    def first_letter_other_than_X(alg):
+        if "X" in alg:
+            alg = " ".join(alg.split()[1:-1])  # the substring beginning after the first whitespace and going to the end of the alg
+        return alg[0]
+
+    def is_rL_in_alg(alg):
+        extra_symbols = ["2", "'", " "]
+        for extra_symbol in extra_symbols:
+            alg = alg.replace(extra_symbol, "")
+        for X_pair in ["RR", "LL", "RL", "LR"]:
+            if alg.upper().find(X_pair) >= 0:
+                return True
+        return False
 
 
-
-
-    # The following method contains a block of 13 comma-separared sort criteria. Order matters
+    # The following method contains a block of many comma-separared sort criteria. Order matters
     # The first one, for S algs, will divide all the algs into 2 groups (with and without S algs)
     # After this division, many of the remaining criteria are mutually exclusive, so the effect within each of the two 
     # subdivisions (with and without S algs) should be to divide the algs neatly into the categories specified by 
@@ -25,25 +45,29 @@ def sort_the_algs(algs):
 
 
 
-
     sorted_algs = sorted(algs, key=lambda alg: (
         "S" not in alg,  # Yes, this was successful in getting ALL non-S algs at the top
-        not any(turn in alg for turn in YorZ_turns) and not any(turn in alg for turn in udbf_turns), # alg has neither  Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision
+        not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udbf_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision
         
-        alg[0] in YorZ_turns,
-        alg[len(alg)-1] == "Y" or alg[len(alg)-2] == "Y" or alg[len(alg)-1] == "Z" or alg[len(alg)-2] == "Z",   # Trailiing YorZ.  Sloppy, but this should cover an alg that ends in Y,Y', Y2, Z, Z' or Z2.  (-1  and -2  because Y could be the last OR second-to-last character)
-        any(turn in alg for turn in YorZ_turns), # internal YorZ
-        
-        alg[0] in udbf_turns,
-        alg[len(alg)-1] == "u" or alg[len(alg)-2] == "u" or alg[len(alg)-1] == "d" or alg[len(alg)-2] == "d" or alg[len(alg)-1] == "b" or alg[len(alg)-2] == "b" or alg[len(alg)-1] == "f" or alg[len(alg)-2] == "f",  # Trailiing udbf.  Ooof! 
-        any(turn in alg for turn in udbf_turns), # The built-in 'any' function is used to check whether any members of a list are included in a given string
+
+        "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udbf (eg. none with both Z and d), so this places ALL YorZ algs above ALL udbf algs
+
+
+        first_letter_other_than_X(alg) in YorZ_turns or final_letter(alg) in YorZ_turns or first_letter_other_than_X(alg) in udbf_turns or final_letter(alg) in udbf_turns,    # disregarding X:  algs that lead or end with Y or Z, or algs that lead or end with u,d,f,b
+        "X" not in alg,
+        first_letter_other_than_X(alg) in YorZ_turns or first_letter_other_than_X(alg) in udbf_turns,
+
 
         "T" not in alg,
         "T'" not in alg,
+        alg.count("T") < 2,  # alg has fewer than 2 instances of T
         "D" not in alg,
 
+
         100 - calculate_alg_length(alg),
+        not is_rL_in_alg(alg),
         "Y" in alg,  # algs with Y above algs with Z, within each of the smallest divisions
+
 
         # final micro-sort, starting with making the u,d,f,b regions cleaner...
         "u" in alg,
@@ -51,25 +75,6 @@ def sort_the_algs(algs):
         "f" in alg,
         "b" in alg,
 
-
-
-        #DIDN'T END UP SEEMING THAT USEFUL (BELOW)
-        #DIDN'T END UP SEEMING THAT USEFUL (BELOW)
-        # ... and then trying to put other things together with like things. Hopefully forcing many inverses to be next to each other
-        # "R2" in alg,
-        # "U2" in alg,
-        # "L2" in alg,
-        # "F2" in alg,
-        # "D2" in alg,
-        # "B2" in alg,
-        # "T2" in alg,
-
-        # "r2" in alg,
-        # "l2" in alg,
-        # "r" in alg,
-        # "l" in alg,
-        #DIDN'T END UP SEEMING THAT USEFUL (ABOVE)
-        #DIDN'T END UP SEEMING THAT USEFUL (ABOVE)
 
         ), reverse = True)
 
