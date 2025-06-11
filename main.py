@@ -16,6 +16,14 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods.alg_is_too_long import alg_is_too_long
 
 
+isTest = True
+if not isTest:
+      print("\n TESTING WILL FAIL. APP IS NOT CHECKING ALGS FOR EDGE vs. CORNER.  TO TES PROPERLY, TURN isTest boolean to TRUE\n")
+if isTest:
+      print("\n app is in testing mode. It checks each alg for edge vs. corner. Nor performant\n")
+
+
+
 # Need new test output files, right???
 # Need new test output files, right???
 # Need new test output files, right???
@@ -32,13 +40,11 @@ from methods.alg_is_too_long import alg_is_too_long
 #    Managing tolerance level for unwieldy algs
 # CONFIGURATION    CONFIGURATION    CONFIGURATION  
 # CONFIGURATION    CONFIGURATION    CONFIGURATION
-is_RL_forbidden_everywhere = True                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
+is_RL_forbidden_everywhere = False                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
 is_RL_forbidden_for_Leading_X_algs = False             # FALSE should be the default.  The "forbidden_everywhere" boolean will override this if "forbidden_everywhere" is set to True. "Forbidden everywhere" paints with a broad stroke in its own method
-isAppFilteringByLength = True                         # TRUE should be the default
+isAppFilteringByLength = False                         # TRUE should be the default
 edgeAlgMaxLength = 16
 edgeAlg_with_S_turns_MaxLength = 15
-if isAppFilteringByLength:
-      print("\n Warning:  the app IS set to filter by length !!! \n")
 
 
 
@@ -71,7 +77,7 @@ with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sor
 
 
 
-# NOTE:  only the FIRST ALG in the list is checked for isCornerAlg, group_number, and pattern !!!!   In my other app, alg-slice-and-widen, each of the hundreds of algs are identified. But this app here must process hundreds of thousands of algs, so I don't want the performance hit of checking each one.
+# NOTE:  with isTest set to false, only the FIRST ALG in the list is checked for isCornerAlg, group_number, and pattern !!!!   In my other app, alg-slice-and-widen, each of the hundreds of algs are identified. But this app here must process hundreds of thousands of algs, so I don't want the performance hit of checking each one.
 pattern = find_pattern(algs[0])
 group_number, isCornerAlg = find_group_and_kingdom(pattern)   # note destructuring syntax
 
@@ -80,6 +86,12 @@ group_number, isCornerAlg = find_group_and_kingdom(pattern)   # note destructuri
 
 bad_algs = []
 for alg in algs:
+    
+    if isTest:
+          pattern = find_pattern(alg)
+          group_number, isCornerAlg = find_group_and_kingdom(pattern) 
+
+         
 
     alg = alg.strip()
 
