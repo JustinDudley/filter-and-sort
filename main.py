@@ -17,23 +17,14 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods.alg_is_too_long import alg_is_too_long
 
 
-isTest = True
+isTest = False
 if not isTest:
       print("\n TESTING WILL FAIL. APP IS NOT CHECKING ALGS FOR EDGE vs. CORNER.  TO TEST PROPERLY, TURN isTest BOOLEAN to TRUE\n")
 if isTest:
       print("\n app is in testing mode. It checks each alg for edge vs. corner. Not performant\n")
-      # Not performant means:  5 minutes versus 1.6 seconds
+      # Not performant means:  5 minutes versus 10 seconds
 
 
-
-# Need new test output files, right???
-# Need new test output files, right???
-# Need new test output files, right???
-# Need new test output files, right???
-# Need new test output files, right???
-# Need new test output files, right???
-# Need new test output files, right???
-# Need new test output files, right???
 
 
 #CONFIGURATION BOOLEANS
@@ -137,14 +128,13 @@ for alg in algs:
           continue
 
 
-    # COMING SOON -- CREATE ALG_DICT FOR EACH ALG DURING LOOP
-    # alg_attributes_dict = create_alg_attributes_dict(alg)   # Need to build out this method
-    alg_dict = create_alg_dict(alg)
+    # CREATE ALG_DICT FOR EACH ALG, DURING LOOP. This is done here, AFTER 99% of the algs have already been trashed, for performance reasons
+    alg_dict = create_alg_dict(alg, isCornerAlg)
 #     print(alg_dict)
 
 
-      # COMING SOON -- OPTIONAL FILTERING BASED ON CONFIGURATION BOOLEANS
 
+      # COMING SOON -- OPTIONAL FILTERING BASED ON CONFIGURATION BOOLEANS
     if special_prohibitions_T_S_rL(alg, isCornerAlg, is_T_rL_length16_notIsCornerAlg_forbidden_when_together, is_S_rL_length15_notIsCornerAlg_forbidden_when_together):
           algs_to_trash.append(alg)
 
