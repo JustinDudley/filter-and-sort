@@ -17,7 +17,7 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods.alg_is_too_long import alg_is_too_long
 
 
-isTest = False
+isTest = True
 if not isTest:
       print("\n TESTING WILL FAIL. APP IS NOT CHECKING ALGS FOR EDGE vs. CORNER.  TO TEST PROPERLY, TURN isTest BOOLEAN to TRUE\n")
 if isTest:
@@ -106,34 +106,35 @@ for alg in algs:
 
     if contains_bad_turns(alg):
          algs_to_trash.append(alg)
-         break
+         continue
 
     if contains_both_T_and_S(alg):
           algs_to_trash.append(alg)
-          break
+          continue
 
     if contains_tri_turn(alg, is_RL_forbidden_everywhere):
           algs_to_trash.append(alg)
-          break
+          continue
 
     if contains_RL_tri_turn_AND_Leading_X(alg, is_RL_forbidden_for_Leading_X_algs):
           algs_to_trash.append(alg)
-          break
+          continue
 
     if contains_T_not_in_UTU(alg):
           algs_to_trash.append(alg)
-          break
+          continue
     
     if contains_S_not_in_LSr(alg):
           algs_to_trash.append(alg)
+          continue
     
     if contains_internal_TY_or_ZT(alg):
           algs_to_trash.append(alg)
-          break
+          continue
 
     if contains_internal_SY_or_ZS(alg):
           algs_to_trash.append(alg)
-          break
+          continue
 
 
     # COMING SOON -- CREATE ALG_DICT FOR EACH ALG DURING LOOP
