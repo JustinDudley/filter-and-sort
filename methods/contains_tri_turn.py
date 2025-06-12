@@ -11,19 +11,19 @@ def contains_tri_turn(alg, is_RL_forbidden_everywhere):
 
 
 
-    # All tri-turns in Y and Z axes -- Add them to the "bad" list no matter what ANY booleans say
+    # All tri-turns in Y and Z axes -- Add them to the "to-trash" list no matter what ANY booleans say
     for pair in ["UU", "DD", "FF", "BB", "UD", "DU", "FB", "BF"]:     
         if alg.upper().find(pair) >= 0:
             return True
 
 
-    # rl and lr pairs -- Add them to the "bad" list no matter what ANY booleans say.  These are not allowed, even if RL, Rl, etc. ARE allowed
+    # rl and lr pairs -- Add them to the "to-trash" list no matter what ANY booleans say.  These are not allowed, even if RL, Rl, etc. ARE allowed
     for rl_pair in ["rl", "lr"]:  
         if alg.find(rl_pair) >= 0:
             return True
 
 
-    # All tri-turns in X axis -- Add them to the "bad" list *IF*  RL is forbidden everywhere
+    # All tri-turns in X axis -- Add them to the "to-trash" list *IF*  RL is forbidden everywhere
     if is_RL_forbidden_everywhere:
         for X_pair in ["RR", "LL", "RL", "LR"]:     
             if alg.upper().find(X_pair) >= 0:

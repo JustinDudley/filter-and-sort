@@ -1,6 +1,7 @@
 
 import datetime
 
+from helper_methods.create_alg_dict import create_alg_dict
 from methods.special_prohibitions_T_S_rL import special_prohibitions_T_S_rL
 from methods.contains_RL_tri_turn_AND_Leading_X import contains_RL_tri_turn_AND_Leading_X
 from methods.pattern_and_group_and_kingdom_finder.find_group_and_kingdom import find_group_and_kingdom
@@ -16,11 +17,12 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods.alg_is_too_long import alg_is_too_long
 
 
-isTest = True
+isTest = False
 if not isTest:
-      print("\n TESTING WILL FAIL. APP IS NOT CHECKING ALGS FOR EDGE vs. CORNER.  TO TES PROPERLY, TURN isTest boolean to TRUE\n")
+      print("\n TESTING WILL FAIL. APP IS NOT CHECKING ALGS FOR EDGE vs. CORNER.  TO TEST PROPERLY, TURN isTest BOOLEAN to TRUE\n")
 if isTest:
-      print("\n app is in testing mode. It checks each alg for edge vs. corner. Nor performant\n")
+      print("\n app is in testing mode. It checks each alg for edge vs. corner. Not performant\n")
+      # Not performant means:  5 minutes versus 1.6 seconds
 
 
 
@@ -40,6 +42,9 @@ if isTest:
 #    Managing tolerance level for unwieldy algs
 # CONFIGURATION    CONFIGURATION    CONFIGURATION  
 # CONFIGURATION    CONFIGURATION    CONFIGURATION
+
+is_trash_1__edge_over16 = True
+
 is_RL_forbidden_everywhere = False                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
 is_RL_forbidden_for_Leading_X_algs = False             # FALSE should be the default.  The "forbidden_everywhere" boolean will override this if "forbidden_everywhere" is set to True. "Forbidden everywhere" paints with a broad stroke in its own method
 isAppFilteringByLength = False                         # TRUE should be the default
@@ -84,7 +89,7 @@ group_number, isCornerAlg = find_group_and_kingdom(pattern)   # note destructuri
 
 
 
-bad_algs = []
+algs_to_trash = []
 for alg in algs:
     
     if isTest:
@@ -100,47 +105,57 @@ for alg in algs:
     # OBLIGATORY FILTERING
 
     if contains_bad_turns(alg):
-         bad_algs.append(alg)
+         algs_to_trash.append(alg)
+         break
 
     if contains_both_T_and_S(alg):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
+          break
 
     if contains_tri_turn(alg, is_RL_forbidden_everywhere):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
+          break
 
     if contains_RL_tri_turn_AND_Leading_X(alg, is_RL_forbidden_for_Leading_X_algs):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
+          break
 
     if contains_T_not_in_UTU(alg):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
+          break
     
     if contains_S_not_in_LSr(alg):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
     
     if contains_internal_TY_or_ZT(alg):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
+          break
 
     if contains_internal_SY_or_ZS(alg):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
+          break
 
 
-      # COMING SOON -- CREATE ALG_DICT FOR EACH ALG DURING LOOP
-      # alg_attributes_dict = create_alg_attributes_dict(alg)   # Need to build out this method
+    # COMING SOON -- CREATE ALG_DICT FOR EACH ALG DURING LOOP
+    # alg_attributes_dict = create_alg_attributes_dict(alg)   # Need to build out this method
+    alg_dict = create_alg_dict(alg)
+#     print(alg_dict)
+
 
       # COMING SOON -- OPTIONAL FILTERING BASED ON CONFIGURATION BOOLEANS
 
     if special_prohibitions_T_S_rL(alg, isCornerAlg, is_T_rL_length16_notIsCornerAlg_forbidden_when_together, is_S_rL_length15_notIsCornerAlg_forbidden_when_together):
-          bad_algs.append(alg)
+          algs_to_trash.append(alg)
 
 
     if isAppFilteringByLength:
           # can make and pass more booleans if more criteria are desired
           if alg_is_too_long(alg, isCornerAlg, edgeAlgMaxLength, edgeAlg_with_S_turns_MaxLength):
-                bad_algs.append(alg)
+                algs_to_trash.append(alg)
 
 
 
-filtered_algs_set = set(algs).difference(set(bad_algs))  # filtered_algs == everything in algs that isn't in bad_algs
+filtered_algs_set = set(algs).difference(set(algs_to_trash))  # filtered_algs == everything in algs that isn't in bad_algs
 filtered_algs = list(filtered_algs_set)
 filtered_algs.sort()  # KEEP -- This alphabetizes the filtered list right before sorting it. This is important because even small changes to the filtering functionality have really weird results on the order of the algs, and without sorting alphabetically here, I keep getting results that, while valid, no longer match my test output file !!
 sorted_algs = sort_the_algs(filtered_algs)
