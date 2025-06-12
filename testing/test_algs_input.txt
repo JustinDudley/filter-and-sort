@@ -476,8 +476,6 @@ X R r U F' D L2 U' T' U r2 U' F r' F2 Y
 X' l L U F' D L2 U' T' U r2 U' F r' F2 Y
 X' l L2 U F' D L2 U' T' U r2 U' F r' F Y
 X2 R L U F' D L2 U' T' U r2 U' F r' F2 Y
-F2 l D f' U l2 U' T' U l2 U' F D' L' F2
-F2 r' D f' U l2 U' T' U l2 U' F D' R F2
 X R r2 D f' U l2 U' T' U l2 U' F D' L
 X' R L D f' U l2 U' T' U l2 U' F D' L2
 X2 l L2 U F' R U2 r' S' L F2 R' U r' U Z'
