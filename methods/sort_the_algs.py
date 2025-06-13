@@ -6,7 +6,7 @@ def sort_the_algs(algs):
 
     YorZ_turns = ["Y", "Z"]
     XorYorZ_turns = ["X", "Y", "Z"]
-    udbf_turns = ["u", "d", "b", "f"]
+    udfb_turns = ["u", "d", "f", "b"]
 
 
     def calculate_alg_length(alg):
@@ -47,15 +47,15 @@ def sort_the_algs(algs):
 
     sorted_algs = sorted(algs, key=lambda alg: (
         "S" not in alg,  # Yes, this was successful in getting ALL non-S algs at the top
-        not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udbf_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision
+        not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udfb_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision
         
 
-        "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udbf (eg. none with both Z and d), so this places ALL YorZ algs above ALL udbf algs
+        "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udfb (eg. none with both Z and d), so this places ALL YorZ algs above ALL udfb algs
 
 
-        first_letter_other_than_X(alg) in YorZ_turns or final_letter(alg) in YorZ_turns or first_letter_other_than_X(alg) in udbf_turns or final_letter(alg) in udbf_turns,    # disregarding X:  algs that lead or end with Y or Z, or algs that lead or end with u,d,f,b
+        first_letter_other_than_X(alg) in YorZ_turns or final_letter(alg) in YorZ_turns or first_letter_other_than_X(alg) in udfb_turns or final_letter(alg) in udfb_turns,    # disregarding X:  algs that lead or end with Y or Z, or algs that lead or end with u,d,f,b
         "X" not in alg,
-        first_letter_other_than_X(alg) in YorZ_turns or first_letter_other_than_X(alg) in udbf_turns,
+        first_letter_other_than_X(alg) in YorZ_turns or first_letter_other_than_X(alg) in udfb_turns,
 
 
         "T" not in alg,

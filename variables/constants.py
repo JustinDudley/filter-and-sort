@@ -22,6 +22,10 @@ STICKERS_SITTING_IN_CENTER_POSITIONS__GROUP_6 = ["ora", "blu", "yel", "grn", "wh
 
 
 
+YorZ_turns = ["Y", "Z"]
+XorYorZ_turns = ["X", "Y", "Z"]
+udfb_turns = ["u", "d", "f", "b"]
+
 
 REPLACEMENTS_DICT = {
 "2'": "2",
