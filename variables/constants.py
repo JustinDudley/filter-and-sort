@@ -6,7 +6,7 @@
 SOLVED_PATTERN_LETTERS = ["wht", "grn", "red", "blu", "ora", "yel", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"]
 
 
-# This app, unlike alg-slice-and-widen, handled FINISHED algs as inputs. The core is already
+# This app, unlike alg-slice-and-widen, handles FINISHED algs as inputs. The core is already
 # rotated, so the edge and corner stickers are in their original positions (except for those that are swapped)
 # But the CORNERS are now shifted around, and these are the stickers that indicate the group number
 

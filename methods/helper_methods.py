@@ -2,7 +2,6 @@
 from variables.constants import YorZ_turns, udfb_turns
 
 
-
 def get_length_without_WCRs(alg):
     for uncounted in [" ", "2", "'", "X", "Y", "Z"]:
         alg = alg.replace(uncounted, "")
@@ -34,6 +33,7 @@ def does_alg_contain_S(alg):
     if "S" in alg:
         return True
     return False
+
 
 
 

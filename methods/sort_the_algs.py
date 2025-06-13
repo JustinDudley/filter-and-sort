@@ -1,48 +1,15 @@
 
-import copy
+from methods.helper_methods import does_alg_contain_rL, final_letter, first_letter_other_than_X, get_length_without_WCRs
+from variables.constants import YorZ_turns, udfb_turns, XorYorZ_turns
 
 
 def sort_the_algs(algs):
 
-    YorZ_turns = ["Y", "Z"]
-    XorYorZ_turns = ["X", "Y", "Z"]
-    udfb_turns = ["u", "d", "f", "b"]
-
-
-    def calculate_alg_length(alg):
-        compacted_alg = alg.replace("'", "").replace("2", "").replace(" ", "").replace("X","").replace("Y","").replace("Z","")
-        alg_length = len(compacted_alg)
-        return alg_length
-
-    # def second_letter(alg):
-    #     substring_following_first_whitespace = " ".join(alg.split()[1:-1])
-    #     return substring_following_first_whitespace[0]
-
-    def final_letter(alg):
-        index_final_whitespace = alg.rfind(" ")
-        return alg[index_final_whitespace + 1]
-    
-    def first_letter_other_than_X(alg):
-        if "X" in alg:
-            alg = " ".join(alg.split()[1:-1])  # the substring beginning after the first whitespace and going to the end of the alg
-        return alg[0]
-
-    def is_rL_in_alg(alg):
-        extra_symbols = ["2", "'", " "]
-        for extra_symbol in extra_symbols:
-            alg = alg.replace(extra_symbol, "")
-        for X_pair in ["RR", "LL", "RL", "LR"]:
-            if alg.upper().find(X_pair) >= 0:
-                return True
-        return False
-
-
-    # The following method contains a block of many comma-separared sort criteria. Order matters
+    # The following method contains a block of many COMMA-SEPARATED sort criteria. Order matters
     # The first one, for S algs, will divide all the algs into 2 groups (with and without S algs)
     # After this division, many of the remaining criteria are mutually exclusive, so the effect within each of the two 
     # subdivisions (with and without S algs) should be to divide the algs neatly into the categories specified by 
     # the criteria
-
 
 
     sorted_algs = sorted(algs, key=lambda alg: (
@@ -64,8 +31,8 @@ def sort_the_algs(algs):
         "D" not in alg,
 
 
-        100 - calculate_alg_length(alg),
-        not is_rL_in_alg(alg),
+        100 - get_length_without_WCRs(alg),
+        not does_alg_contain_rL(alg),
         "Y" in alg,  # algs with Y above algs with Z, within each of the smallest divisions
 
 
