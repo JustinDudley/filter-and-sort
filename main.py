@@ -67,14 +67,13 @@ with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sor
     algs = file_input.read().splitlines() 
 
 
-
-
-isTest = True    # NOTE:  with isTest set to false, only the FIRST ALG in the list is checked for isCornerAlg, group_number, and pattern !!!!   In my other app, alg-slice-and-widen, each of the hundreds of algs are identified. But this app here must process hundreds of thousands of algs, so I don't want the performance hit of checking each one.
 pattern = find_pattern(algs[0])
 group_number, isCornerAlg = find_group_and_kingdom(pattern)   # note destructuring syntax
 
 
+isTest = True    # NOTE:  with isTest set to false, only the FIRST ALG in the list is checked for isCornerAlg, group_number, and pattern !!!!   In my other app, alg-slice-and-widen, each of the hundreds of algs are identified. But this app here must process hundreds of thousands of algs, so I don't want the performance hit of checking each one.
 print_to_console(algs, isTest)
+
 
 
 
@@ -82,38 +81,21 @@ print_to_console(algs, isTest)
 algs_to_trash = []
 for alg in algs:
     
+
+    #PRELIMINARIES
     if isTest:
           pattern = find_pattern(alg)
           group_number, isCornerAlg = find_group_and_kingdom(pattern) 
-    # find two algs, edge and corner, in test input file. Check if they're in the current input file. Then
-    # only give a message about the test failing IF the file contains those 2 files and if I've failed to turn isTest to true
-
-    # Could I set a console message that says "This is slow because you forgot to turn off isTest". AFTER ten seconds have gone by??
-    # I guess I could have a script within the loop. Every 1,000 runs it could check the current time, and print the message if ten seconds had elapsed.
-         
-
     alg = alg.strip()
     alg_dict = create_alg_dict(alg, isCornerAlg)  # The longest a run of this program is ever going to take is about 8 seconds. I can make it 4 times faster, 2 seconds, by switching this method with "contains_bad_turns" because that probably eliminates 95% of all the algs by itself. But building the alg_dict at the top looks SO much cleaner for the flow of Main
 
 
 
-    # OBLIGATORY FILTERING
 
+    # BASELINE FILTERING
     if contains_bad_turns(alg):
          algs_to_trash.append(alg)
          continue
-
-    if contains_both_T_and_S(alg):
-          algs_to_trash.append(alg)
-          continue
-
-    if contains_tri_turn(alg, is_RL_forbidden_everywhere):
-          algs_to_trash.append(alg)
-          continue
-
-    if contains_RL_tri_turn_AND_Leading_X(alg, is_RL_forbidden_for_Leading_X_algs):
-          algs_to_trash.append(alg)
-          continue
 
     if contains_T_not_in_UTU(alg):
           algs_to_trash.append(alg)
@@ -131,7 +113,27 @@ for alg in algs:
           algs_to_trash.append(alg)
           continue
 
+    if contains_both_T_and_S(alg):
+          algs_to_trash.append(alg)
+          continue
 
+    if contains_tri_turn(alg, is_RL_forbidden_everywhere):
+          algs_to_trash.append(alg)
+          continue
+
+    if isAppFilteringByLength:
+          # can make and pass more booleans if more criteria are desired
+          if alg_is_too_long(alg, isCornerAlg, edgeAlgMaxLength, edgeAlg_with_S_turns_MaxLength):
+                algs_to_trash.append(alg)
+
+
+
+
+
+    # EXTENDED_OPTIONAL FILTERING
+    if contains_RL_tri_turn_AND_Leading_X(alg, is_RL_forbidden_for_Leading_X_algs):
+          algs_to_trash.append(alg)
+          continue
 
 
 
@@ -147,10 +149,8 @@ for alg in algs:
           algs_to_trash.append(alg)
 
 
-    if isAppFilteringByLength:
-          # can make and pass more booleans if more criteria are desired
-          if alg_is_too_long(alg, isCornerAlg, edgeAlgMaxLength, edgeAlg_with_S_turns_MaxLength):
-                algs_to_trash.append(alg)
+
+
 
 
 
