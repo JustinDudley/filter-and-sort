@@ -15,6 +15,7 @@ from methods__filtering.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods__filtering.alg_is_too_long import alg_is_too_long
+from methods__optional_filtering.alg_contains_combo__edge_over16 import alg_contains_combo__edge_over16
 
 
 
@@ -26,13 +27,16 @@ from methods__filtering.alg_is_too_long import alg_is_too_long
 # CONFIGURATION    CONFIGURATION    CONFIGURATION  
 # CONFIGURATION    CONFIGURATION    CONFIGURATION
 
-is_trash_1__edge_over16 = False
 
 is_RL_forbidden_everywhere = True                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
 is_RL_forbidden_for_Leading_X_algs = False             # FALSE should be the default.  The "forbidden_everywhere" boolean will override this if "forbidden_everywhere" is set to True. "Forbidden everywhere" paints with a broad stroke in its own method
 isAppFilteringByLength = True                         # TRUE should be the default
 edgeAlgMaxLength = 16
 edgeAlg_with_S_turns_MaxLength = 15
+
+
+this_combo_is_trash__1__edge_over16 = False
+this_combo_is_trash__2__edge_S_over15 = False
 
 
 
@@ -83,10 +87,15 @@ for alg in algs:
     if isTest:
           pattern = find_pattern(alg)
           group_number, isCornerAlg = find_group_and_kingdom(pattern) 
+    # find two algs, edge and corner, in test input file. Check if they're in the current input file. Then
+    # only give a message about the test failing IF the file contains those 2 files and if I've failed to turn isTest to true
 
+    # Could I set a console message that says "This is slow because you forgot to turn off isTest". AFTER ten seconds have gone by??
+    # I guess I could have a script within the loop. Every 1,000 runs it could check the current time, and print the message if ten seconds had elapsed.
          
 
     alg = alg.strip()
+    alg_dict = create_alg_dict(alg, isCornerAlg)  # The longest a run of this program is ever going to take is about 8 seconds. I can make it 4 times faster, 2 seconds, by switching this method with "contains_bad_turns" because that probably eliminates 95% of all the algs by itself. But building the alg_dict at the top looks SO much cleaner for the flow of Main
 
 
 
@@ -125,13 +134,17 @@ for alg in algs:
           continue
 
 
-    # CREATE ALG_DICT FOR EACH ALG, DURING LOOP. This is done here, AFTER 99% of the algs have already been trashed, for performance reasons
-    alg_dict = create_alg_dict(alg, isCornerAlg)
-#     print(alg_dict)
 
 
 
-      # COMING SOON -- OPTIONAL FILTERING BASED ON CONFIGURATION BOOLEANS
+    # OPTIONAL METHODS
+#     alg_dict = create_alg_dict(alg, isCornerAlg)      # Create alg_dict for each alg, during loop. This is done here, AFTER 99% of the algs have already been trashed, for performance reasons
+
+    if this_combo_is_trash__1__edge_over16:
+          if alg_contains_combo__edge_over16(alg_dict):
+                algs_to_trash.append(alg)
+                continue
+
     if special_prohibitions_T_S_rL(alg, isCornerAlg, is_T_rL_length16_notIsCornerAlg_forbidden_when_together, is_S_rL_length15_notIsCornerAlg_forbidden_when_together):
           algs_to_trash.append(alg)
 
