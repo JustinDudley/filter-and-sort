@@ -1,6 +1,7 @@
 
 import datetime
 
+from methods.print_to_console import print_to_console
 from methods.find_pattern import find_pattern
 from methods.sort_the_algs import sort_the_algs
 from methods.create_alg_dict import create_alg_dict
@@ -71,12 +72,9 @@ with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sor
 isTest = True    # NOTE:  with isTest set to false, only the FIRST ALG in the list is checked for isCornerAlg, group_number, and pattern !!!!   In my other app, alg-slice-and-widen, each of the hundreds of algs are identified. But this app here must process hundreds of thousands of algs, so I don't want the performance hit of checking each one.
 pattern = find_pattern(algs[0])
 group_number, isCornerAlg = find_group_and_kingdom(pattern)   # note destructuring syntax
-if not isTest:
-      print("\n TESTING WILL FAIL. APP IS NOT CHECKING ALGS FOR EDGE vs. CORNER.  TO TEST PROPERLY, TURN isTest BOOLEAN to TRUE\n")
-if isTest:
-      print("\n app is in testing mode. It checks each alg for edge vs. corner. Not performant\n")
-      # Not performant means:  5 minutes versus 10 seconds
 
+
+print_to_console(algs, isTest)
 
 
 
