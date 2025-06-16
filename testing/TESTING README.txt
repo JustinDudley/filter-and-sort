@@ -1,7 +1,7 @@
 TESTING README
 
 Newest material:
-The input file is the main test input file. It has all sorts of alg examples designed to trip up the 
+The input file has all sorts of alg examples designed to trip up the 
 app if the app isn't built right. Does it have enough variety to really catch everything?  Probably not. But it's close.
 
 So far I just have a BASELINE output file, for the existing baseline (non-optional) tests. If I add more restrictions to the baseline,
@@ -10,7 +10,7 @@ restrictions. Honestly, I think if I turn all the optional restrictions to TRUE,
 be a sufficient test. I don't need to kill myself with 4 or 5 test output files.
 
 
-I had THOUGHT to put in a HOMOGENEOUS input file too, that is, a real file from edge AU or corners AK or whatever. 
+I had THOUGHT to put in a second, HOMOGENEOUS, input file too. That is, a real file from edge AU or corners AK or whatever. 
 I just wanted to test the functionality of the "input_is_homogeneous" boolean.
 But:  If something goes haywire there I should know.
 If the app starts testing EVERY alg for files of 50,000 algs, it will take minutes instead of seconds.
