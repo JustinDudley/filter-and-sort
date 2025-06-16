@@ -31,13 +31,6 @@ this_combo_is_trash__2__corner_rL_over17 = False   # my second optional boolean,
 
 
 
-# TONIGHT:
-
-# Baseline 
-# testing suite
-# input list is less than 500. Still works.
-
-
 
 startTime = datetime.datetime.now()
 with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/INPUT_file/final_alg_list_input.txt") as file_input:
@@ -110,8 +103,8 @@ for alg in algs:
 
 
 
+
     # OPTIONAL FILTERING
-    
     
     # UNTESTED:
     # UNTESTED:
