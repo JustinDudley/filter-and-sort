@@ -2,12 +2,11 @@
 # Note:  Slice comps should never come into play. Alg-slice-and-widen has already removed them
 
 
-def contains_tri_turn(alg, is_RL_forbidden_everywhere):   
+def contains_tri_turn__UD_FB_rl(alg):   
     
     for extra in [" ", "2", "'"]:
         alg = alg.replace(extra, "")
     
-
 
 
 
@@ -21,16 +20,6 @@ def contains_tri_turn(alg, is_RL_forbidden_everywhere):
     for rl_pair in ["rl", "lr"]:  
         if alg.find(rl_pair) >= 0:
             return True
-
-
-    # All tri-turns in X axis -- Add them to the "to-trash" list *IF*  RL is forbidden everywhere
-    if is_RL_forbidden_everywhere:
-        for X_pair in ["RR", "LL", "RL", "LR"]:     
-            if alg.upper().find(X_pair) >= 0:
-                return True  
-    
-
-
 
 
     return False

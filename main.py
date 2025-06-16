@@ -1,94 +1,61 @@
 
 import datetime
 
-from methods.print_to_console import print_to_console
-from methods.find_pattern import find_pattern
+from methods.identify_alg import identify_alg
 from methods.sort_the_algs import sort_the_algs
 from methods.create_alg_dict import create_alg_dict
-from methods.find_group_and_kingdom import find_group_and_kingdom
-from methods__filtering.special_prohibitions_T_S_rL import special_prohibitions_T_S_rL
-from methods__filtering.contains_RL_tri_turn_AND_Leading_X import contains_RL_tri_turn_AND_Leading_X
+from methods.input_is_homogeneous import input_is_homogeneous
+from methods__filtering.alg_contains_combo__corner_rL_internalYorZ_over17 import alg_contains_combo__corner_rL_internalYorZ_over17
+from methods__filtering.alg_contains_combo__edge_S_over15 import alg_contains_combo__edge_S_over15
+from methods__filtering.alg_contains_combo__edge_S_rL_over14 import alg_contains_combo__edge_S_rL_over14
+from methods__filtering.alg_contains_combo__edge_over16 import alg_contains_combo__edge_over16
 from methods__filtering.contains_bad_turns import contains_bad_turns
 from methods__filtering.contains_both_T_and_S import contains_both_T_and_S
-from methods__filtering.contains_tri_turn import contains_tri_turn
+from methods__filtering.contains_tri_turn__UD_FB_rl import contains_tri_turn__UD_FB_rl
 from methods__filtering.contains_T_not_in_UTU import contains_T_not_in_UTU
 from methods__filtering.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
-from methods__filtering.alg_is_too_long import alg_is_too_long
-from methods__optional_filtering.alg_contains_combo__edge_over16 import alg_contains_combo__edge_over16
+from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
+from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
+
+
+
+# BOOLEANS FOR OPTIONAL FILTERING
+this_combo_is_trash__1__edge_T_rL_over15 = False   # my first optional boolean, past baseline
+this_combo_is_trash__2__corner_rL_over17 = False   # my second optional boolean, past baseline
+# can add more booleans for optional filtering
+# can add more booleans for optional filtering
+# can add more booleans for optional filtering
 
 
 
 
-#CONFIGURATION BOOLEANS
+# TONIGHT:
 
-
-#    Managing tolerance level for unwieldy algs
-# CONFIGURATION    CONFIGURATION    CONFIGURATION  
-# CONFIGURATION    CONFIGURATION    CONFIGURATION
-
-
-is_RL_forbidden_everywhere = True                    # FALSE should be the default. (RL_turns are tri-turns occuring in the X-axis)
-is_RL_forbidden_for_Leading_X_algs = False             # FALSE should be the default.  The "forbidden_everywhere" boolean will override this if "forbidden_everywhere" is set to True. "Forbidden everywhere" paints with a broad stroke in its own method
-isAppFilteringByLength = True                         # TRUE should be the default
-edgeAlgMaxLength = 16
-edgeAlg_with_S_turns_MaxLength = 15
-
-
-this_combo_is_trash__1__edge_over16 = False
-this_combo_is_trash__2__edge_S_over15 = False
+# Baseline 
+# testing suite
+# input list is less than 500. Still works.
 
 
 
-# Specialty prohibitions: 
-# THESE ACTUALLY DO WORK FOR EDGE ALGS !!!  
-# # And yes, it doesn't affect the corner algs. Tested, yes
-# 
-# I probably need to eliminate 18 rL algs (applies to corners)
-# I'm going to need to change the test suite, or add something...
-#  
-# # THESE ACTUALLY DO WORK FOR EDGE ALGS !!!  
-# # And yes, it doesn't affect the corner algs. Tested, yes   
-is_T_rL_length16_notIsCornerAlg_forbidden_when_together = False  # EDGE algs with length 16 or greater that include T and rL are forbidden
-is_S_rL_length15_notIsCornerAlg_forbidden_when_together = False  # EDGE algs with length 15 or greater that include S and rL are forbidden
-
-# UNTESTED.  (Well, tested and failed, I think. Or broke the app. Or something)
-is_internalYorZ_rL_length18_IsCornerAlg_forbidden_when_together = False    # not used yet
-
-# CONFIGURATION    CONFIGURATION    CONFIGURATION
-# CONFIGURATION    CONFIGURATION    CONFIGURATION
-
-
-
-
-startTime = datetime.datetime.now()  # to monitor performance of program
+startTime = datetime.datetime.now()
 with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/INPUT_file/final_alg_list_input.txt") as file_input:
     algs = file_input.read().splitlines() 
 
-
-pattern = find_pattern(algs[0])
-group_number, isCornerAlg = find_group_and_kingdom(pattern)   # note destructuring syntax
-
-
-isTest = True    # NOTE:  with isTest set to false, only the FIRST ALG in the list is checked for isCornerAlg, group_number, and pattern !!!!   In my other app, alg-slice-and-widen, each of the hundreds of algs are identified. But this app here must process hundreds of thousands of algs, so I don't want the performance hit of checking each one.
-print_to_console(algs, isTest)
-
-
+pattern, group_number, isCornerAlg = identify_alg(algs[0])
+input_is_homogeneous = input_is_homogeneous(algs)  
 
 
 
 algs_to_trash = []
 for alg in algs:
     
-
     #PRELIMINARIES
-    if isTest:
-          pattern = find_pattern(alg)
-          group_number, isCornerAlg = find_group_and_kingdom(pattern) 
     alg = alg.strip()
-    alg_dict = create_alg_dict(alg, isCornerAlg)  # The longest a run of this program is ever going to take is about 8 seconds. I can make it 4 times faster, 2 seconds, by switching this method with "contains_bad_turns" because that probably eliminates 95% of all the algs by itself. But building the alg_dict at the top looks SO much cleaner for the flow of Main
-
+    if not input_is_homogeneous:
+          pattern, group_number, isCornerAlg = identify_alg(alg)
+    alg_dict = create_alg_dict(alg, isCornerAlg)  # The longest a run of this program is ever going to take is about 8 seconds. I can make it 4 times faster, 2 seconds, by putting this method below "contains_bad_turns" because that probably eliminates 95% of all the algs by itself. But building the alg_dict at the top looks SO much cleaner for the flow of Main
 
 
 
@@ -117,38 +84,52 @@ for alg in algs:
           algs_to_trash.append(alg)
           continue
 
-    if contains_tri_turn(alg, is_RL_forbidden_everywhere):
+    if contains_tri_turn__UD_FB_rl(alg):
           algs_to_trash.append(alg)
           continue
 
-    if isAppFilteringByLength:
-          # can make and pass more booleans if more criteria are desired
-          if alg_is_too_long(alg, isCornerAlg, edgeAlgMaxLength, edgeAlg_with_S_turns_MaxLength):
-                algs_to_trash.append(alg)
-
-
-
-
-
-    # EXTENDED_OPTIONAL FILTERING
-    if contains_RL_tri_turn_AND_Leading_X(alg, is_RL_forbidden_for_Leading_X_algs):
+    if alg_contains_combo__edge_over16(alg_dict):
           algs_to_trash.append(alg)
-          continue
+          continue 
 
-
-
-    # OPTIONAL METHODS
-#     alg_dict = create_alg_dict(alg, isCornerAlg)      # Create alg_dict for each alg, during loop. This is done here, AFTER 99% of the algs have already been trashed, for performance reasons
-
-    if this_combo_is_trash__1__edge_over16:
-          if alg_contains_combo__edge_over16(alg_dict):
-                algs_to_trash.append(alg)
-                continue
-
-    if special_prohibitions_T_S_rL(alg, isCornerAlg, is_T_rL_length16_notIsCornerAlg_forbidden_when_together, is_S_rL_length15_notIsCornerAlg_forbidden_when_together):
+    if alg_contains_combo__edge_S_over15(alg_dict):
           algs_to_trash.append(alg)
+          continue 
+
+    if alg_contains_combo__edge_S_rL_over14(alg_dict):
+          algs_to_trash.append(alg)
+          continue 
+
+    if alg_contains_combo__corner_rL_internalYorZ_over17(alg_dict):   # STILL NEED TO TEST
+          algs_to_trash.append(alg)
+          continue 
+
+    # can add more methods to baseline IF I ALSO CHANGE THE TESTING SUITE
+    # can add more methods to baseline IF I ALSO CHANGE THE TESTING SUITE
+    # can add more methods to baseline IF I ALSO CHANGE THE TESTING SUITE
 
 
+
+    # OPTIONAL FILTERING
+    
+    
+    # UNTESTED:
+    # UNTESTED:
+    if this_combo_is_trash__1__edge_T_rL_over15:
+          if alg_contains_combo__edge_T_rL_over15(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
+
+    # UNTESTED:
+    # UNTESTED:
+    if this_combo_is_trash__2__corner_rL_over17:
+          if alg_contains_combo__corner_rL_over17(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
+
+    # can add more methods to optional filtering. May need to change testing suite
+    # can add more methods to optional filtering. May need to change testing suite
+    # can add more methods to optional filtering. May need to change testing suite
 
 
 
