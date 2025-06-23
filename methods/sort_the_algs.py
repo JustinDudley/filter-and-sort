@@ -13,16 +13,16 @@ def sort_the_algs(algs):
 
 
     sorted_algs = sorted(algs, key=lambda alg: (
-        "S" not in alg,  # Yes, this was successful in getting ALL non-S algs at the top
+        "S" not in alg,  # ALL non-S algs at the top
         not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udfb_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision
-        
-
         "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udfb (eg. none with both Z and d), so this places ALL YorZ algs above ALL udfb algs
 
 
-        first_letter_other_than_X(alg) in YorZ_turns or final_letter(alg) in YorZ_turns or first_letter_other_than_X(alg) in udfb_turns or final_letter(alg) in udfb_turns,    # disregarding X:  algs that lead or end with Y or Z, or algs that lead or end with u,d,f,b
-        "X" not in alg,
-        first_letter_other_than_X(alg) in YorZ_turns or first_letter_other_than_X(alg) in udfb_turns,
+        # The first two lines below separate algs into 3 groups:  Leading Y,Z (udfb),  Trailing Y,Z (udfb),  Internal Y,Z (udfb)
+        first_letter_other_than_X(alg) in YorZ_turns or first_letter_other_than_X(alg) in udfb_turns, 
+        final_letter(alg) in YorZ_turns or final_letter(alg) in udfb_turns, 
+        "X" not in alg,     # For each of the 3 groups created above: Move leading_X algs to bottom
+        "X2" not in alg,    # Orders the leading_X algs:  X, X', X2
 
 
         "T" not in alg,
@@ -37,6 +37,7 @@ def sort_the_algs(algs):
 
 
         # final micro-sort, starting with making the u,d,f,b regions cleaner...
+        # The following 4 lines, along with "Y in alg" above, are the only sort criteria that AREN'T identified by labels or conditional formatting in the Excel file
         "u" in alg,
         "d" in alg,
         "f" in alg,
