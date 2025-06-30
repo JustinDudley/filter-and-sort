@@ -1,4 +1,5 @@
 
+import copy
 from variables.constants import YorZ_turns, udfb_turns
 
 
@@ -14,13 +15,25 @@ def does_alg_have_leading_X(alg):
     return False
 
 
-def does_alg_contain_rL(alg):
+def does_alg_contain_rL(alg):  # still used by SORT
     for extra in [" ", "2", "'"]:
         alg = alg.replace(extra, "")
     for X_axis_pair in ["RR", "LL", "RL", "LR"]:     
         if alg.upper().find(X_axis_pair) >= 0:
             return True 
     return False
+
+
+def number_of_instances_of_rL(alg):  # used to build alg_dict
+    for extra in [" ", "2", "'"]:
+        alg = alg.replace(extra, "")
+    
+    alg_upper_without_rL = copy.deepcopy(alg.upper())
+    for X_axis_pair in ["RR", "LL", "RL", "LR"]:
+        alg_upper_without_rL = alg_upper_without_rL.replace(X_axis_pair, "")
+    number_of_instances = (len(alg) - len(alg_upper_without_rL)) / 2     # each undesirable substring (RR, RL, etc.) has length 2
+
+    return number_of_instances
 
 
 def does_alg_contain_T(alg):

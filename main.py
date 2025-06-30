@@ -19,14 +19,21 @@ from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_o
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
 from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
+from methods__optional_filtering.alg_contains_combo__edge_rL2_internalYorZ_over15 import alg_contains_combo__edge_rL2_internalYorZ_over15
 
 
 
-# BOOLEANS FOR OPTIONAL FILTERING
+# BOOLEANS FOR OPTIONAL FILTERING set to TRUE (unless doing some testing)
+this_combo_is_trash__3__corner_X_rL_over17 = True   # my third optional boolean, past baseline
+this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True   # my third optional boolean, past baseline
+
+
+
+# BOOLEANS FOR OPTIONAL FILTERING set to FALSE (unless doing some testing)
 this_combo_is_trash__1__edge_T_rL_over15 = False   # my first optional boolean, past baseline
 this_combo_is_trash__2__corner_rL_over17 = False   # my second optional boolean, past baseline
 
-this_combo_is_trash__3__corner_X_rL_over17 = True   # my first optional boolean, past baseline
+
 # can add more booleans for optional filtering
 # can add more booleans for optional filtering
 # can add more booleans for optional filtering
@@ -92,11 +99,11 @@ for alg in algs:
           algs_to_trash.append(alg)
           continue 
 
-    if alg_contains_combo__edge_S_rL_over14(alg_dict):
+    if alg_contains_combo__edge_S_rL_over14(alg_dict): 
           algs_to_trash.append(alg)
           continue 
 
-    if alg_contains_combo__corner_rL_internalYorZ_over17(alg_dict):   # STILL NEED TO TEST
+    if alg_contains_combo__corner_rL_internalYorZ_over17(alg_dict): 
           algs_to_trash.append(alg)
           continue 
 
@@ -108,13 +115,19 @@ for alg in algs:
 
 
     # OPTIONAL FILTERING
-    # Rule 3 is tested.  Works, YES.
+
+    # KEEP:  Optional Rule 3 has been successfully tested.
     if this_combo_is_trash__3__corner_X_rL_over17:
           if alg_contains_combo__corner_X_rL_over17(alg_dict):
                 algs_to_trash.append(alg)
                 continue  
 
-
+    # KEEP:  Optional Rule 4 has been successfully tested.
+    if this_combo_is_trash__4__edge_rL2_internalYorZ_over15:
+          if alg_contains_combo__edge_rL2_internalYorZ_over15(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
+          
 
     # UNTESTED:
     # UNTESTED:
