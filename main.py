@@ -16,6 +16,7 @@ from methods__filtering.contains_T_not_in_UTU import contains_T_not_in_UTU
 from methods__filtering.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
+from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
 from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
 
@@ -24,6 +25,8 @@ from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg
 # BOOLEANS FOR OPTIONAL FILTERING
 this_combo_is_trash__1__edge_T_rL_over15 = False   # my first optional boolean, past baseline
 this_combo_is_trash__2__corner_rL_over17 = False   # my second optional boolean, past baseline
+
+this_combo_is_trash__3__corner_X_rL_over17 = True   # my first optional boolean, past baseline
 # can add more booleans for optional filtering
 # can add more booleans for optional filtering
 # can add more booleans for optional filtering
@@ -105,7 +108,14 @@ for alg in algs:
 
 
     # OPTIONAL FILTERING
-    
+    # Rule 3 is tested.  Works, YES.
+    if this_combo_is_trash__3__corner_X_rL_over17:
+          if alg_contains_combo__corner_X_rL_over17(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
+
+
+
     # UNTESTED:
     # UNTESTED:
     if this_combo_is_trash__1__edge_T_rL_over15:
