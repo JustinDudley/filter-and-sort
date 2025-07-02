@@ -18,6 +18,7 @@ from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_o
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
+from methods__optional_filtering.alg_contains_combo__edge_S2_over14 import alg_contains_combo__edge_S2_over14
 from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
 from methods__optional_filtering.alg_contains_combo__edge_X_T_rL_over15 import alg_contains_combo__edge_X_T_rL_over15
 from methods__optional_filtering.alg_contains_combo__edge_rL2_internalYorZ_over15 import alg_contains_combo__edge_rL2_internalYorZ_over15
@@ -30,6 +31,7 @@ this_combo_is_trash__3__corner_X_rL_over17 = True
 this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True 
 this_combo_is_trash__5__edge_X_T_rL_over15 = True    
 this_combo_is_trash__6__edge_rL_T_internalYorZ_over15 = True    
+this_combo_is_trash__7__edge_S2_over14 = True    
 
 
 # BOOLEANS FOR OPTIONAL FILTERING set to FALSE (unless doing some testing)
@@ -143,6 +145,12 @@ for alg in algs:
                 algs_to_trash.append(alg)
                 continue         
 
+    # KEEP:  Optional Rule 7 has been successfully tested.
+    if this_combo_is_trash__7__edge_S2_over14:
+          if alg_contains_combo__edge_S2_over14(alg_dict):
+                algs_to_trash.append(alg)
+                continue   
+
 
 
 
@@ -172,7 +180,7 @@ filtered_algs_set = set(algs).difference(set(algs_to_trash))  # filtered_algs ==
 filtered_algs = list(filtered_algs_set)
 filtered_algs.sort()  # KEEP -- This alphabetizes the filtered list right before sorting it. This is important because even small changes to the filtering functionality have really weird results on the order of the algs, and without sorting alphabetically here, I keep getting results that, while valid, no longer match my test output file !!
 sorted_algs = sort_the_algs(filtered_algs)
-       
+
 
 
 # WRITE TO FILE:  filtered algs

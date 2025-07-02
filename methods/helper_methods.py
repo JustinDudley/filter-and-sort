@@ -36,6 +36,14 @@ def number_of_instances_of_rL(alg):  # used to build alg_dict
     return number_of_instances
 
 
+def number_of_instances_of_S(alg):  # used to build alg_dict
+    for extra in [" ", "2", "'"]:
+        alg = alg.replace(extra, "")
+    alg_without_S = alg.replace("S", "")
+    number_of_instances = len(alg) - len(alg_without_S) 
+    return number_of_instances
+
+
 def does_alg_contain_T(alg):
     if "T" in alg:
         return True
