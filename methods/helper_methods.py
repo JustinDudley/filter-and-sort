@@ -56,6 +56,11 @@ def does_alg_contain_S(alg):
     return False
 
 
+def does_alg_contain_Y_or_Z_somewhere(alg):
+    if "Y" in alg or "Z" in alg:
+        return True
+    return False
+
 
 
 
