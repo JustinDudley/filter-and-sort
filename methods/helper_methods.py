@@ -83,6 +83,12 @@ def does_alg_contain_internal_YorZ(alg):
     return False
 
 
+def does_alg_contain_internal_X(alg):
+    if "X" in alg and not alg[0] == "X":
+        return True
+    return False
+
+
 def does_alg_contain_internal_udfb(alg):
     for turn in udfb_turns:
         if turn in alg:

@@ -17,6 +17,7 @@ from methods__filtering.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
+from methods__optional_filtering.alg_contains_combo__corner_internalX_over17 import alg_contains_combo__corner_internalX_over17
 from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
 from methods__optional_filtering.alg_contains_combo__edge_S2_over14 import alg_contains_combo__edge_S2_over14
 from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
@@ -34,6 +35,7 @@ this_combo_is_trash__5__edge_X_T_rL_over15 = True
 this_combo_is_trash__6__edge_rL_T_internalYorZ_over15 = True    
 this_combo_is_trash__7__edge_S2_over14 = True    
 this_combo_is_trash__8__edge_X_S_YorZsomewhere_over14 = True    
+this_combo_is_trash__9__corner_internalX_over17 = True    
 
 
 # BOOLEANS FOR OPTIONAL FILTERING set to FALSE (unless doing some testing)
@@ -156,6 +158,12 @@ for alg in algs:
     # KEEP:  Optional Rule 8 has been successfully tested.
     if this_combo_is_trash__8__edge_X_S_YorZsomewhere_over14:
           if alg_contains_combo__edge_X_S_YorZsomewhere_over14(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
+
+    # KEEP:  Optional Rule 9 has been successfully tested.
+    if this_combo_is_trash__9__corner_internalX_over17:
+          if alg_contains_combo__corner_internalX_over17(alg_dict):
                 algs_to_trash.append(alg)
                 continue  
 
