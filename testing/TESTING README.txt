@@ -4,10 +4,24 @@ Newest material:
 The input file has all sorts of alg examples designed to trip up the 
 app if the app isn't built right. Does it have enough variety to really catch everything?  Probably not. But it's close.
 
-So far I just have a BASELINE output file, for the existing baseline (non-optional) tests. If I add more restrictions to the baseline,
-I'll need to change the output file. More importantly, I plan to ADD AN "OPTIONAL" OUTPUT file when I've collected a few optional
-restrictions. Honestly, I think if I turn all the optional restrictions to TRUE, for maximum restriction and most trashed algs, that will
-be a sufficient test. I don't need to kill myself with 4 or 5 test output files.
+The FIRST test output file is a BASELINE output file, for the existing baseline (non-optional) tests. If I add more restrictions to the baseline,
+I'll need to change the output file. 
+
+The SECOND test output file includes optional filters.  Here is how the filter booleans are set for the test. (These are the 
+filters I used to generate the first major repo_2 file with 50+ columns)
+
+****************
+this_combo_is_trash__3__corner_X_rL_over17 = True  
+this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True 
+this_combo_is_trash__5__edge_X_T_rL_over15 = True    
+this_combo_is_trash__6__edge_rL_T_internalYorZ_over15 = True    
+this_combo_is_trash__7__edge_S2_over14 = True    
+this_combo_is_trash__8__edge_X_S_YorZsomewhere_over14 = True    
+
+this_combo_is_trash__1__edge_T_rL_over15 = False   
+this_combo_is_trash__2__corner_rL_over17 = False  
+****************
+
 
 
 I had THOUGHT to put in a second, HOMOGENEOUS, input file too. That is, a real file from edge AU or corners AK or whatever. 
