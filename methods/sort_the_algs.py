@@ -18,30 +18,49 @@ def sort_the_algs(algs):
         "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udfb (eg. none with both Z and d), so this places ALL YorZ algs above ALL udfb algs
 
 
-        # The first two lines below separate algs into 3 groups:  Leading Y,Z (udfb),  Trailing Y,Z (udfb),  Internal Y,Z (udfb)
+        # The first two lines below separate algs into 3 groups:  Leading Y,Z (& leading udfb),  Trailing Y,Z (& trailing udfb),  Internal Y,Z (& internal udfb)
         first_letter_other_than_X(alg) in YorZ_turns or first_letter_other_than_X(alg) in udfb_turns, 
         final_letter(alg) in YorZ_turns or final_letter(alg) in udfb_turns, 
-        "X" not in alg,     # For each of the 3 groups created above: Move leading_X algs to bottom
-        "X2" not in alg,    # Orders the leading_X algs:  X, X', X2
+
+        # for YorZ and for udfb:  Start with non-X algs, then go to leading_X algs
+        "X" not in alg,
+        alg[0] == "X",
+
+        "X2 Y" not in alg,  # will apply only to the leading YorZ area. Want these bad prep moves at the bottom
+        "X2 Z" not in alg,  # will apply only to the leading YorZ area. Want these bad prep moves at the bottom
 
 
         "T" not in alg,
         "T'" not in alg,
         alg.count("T") < 2,  # alg has fewer than 2 instances of T
-        "D" not in alg,
 
 
         100 - get_length_without_WCRs(alg),
         not does_alg_contain_rL(alg),
-        "Y" in alg,  # algs with Y above algs with Z, within each of the smallest divisions
+
+
+        "L" not in alg and "l" not in alg,
+        "D" not in alg,
+
+
+        # At the low-ish micro-level, list X first, then X' then X2
+        "X " in alg,   # X with a space. So, not X' or X2
+        "X'" in alg,
+        "X2" in alg,
 
 
         # final micro-sort, starting with making the u,d,f,b regions cleaner...
-        # The following 4 lines, along with "Y in alg" above, are the only sort criteria that AREN'T identified by labels or conditional formatting in the Excel file
-        "u" in alg,
-        "d" in alg,
-        "f" in alg,
+        # The following 4 lines are examples of sort criteria that AREN'T identified by labels or conditional formatting in the Excel file
         "b" in alg,
+        "f" in alg,
+        "d" in alg,
+        "u" in alg,
+
+
+        # Make D and L pretty. Fewest L's first.  Within each L possibility, fewest D first
+        100 - (alg.count("L") + alg.count("l")),
+        100 - alg.count("D"),
+        "Y" in alg,  # algs with Y above algs with Z, within each of the smallest divisions
 
 
         ), reverse = True)

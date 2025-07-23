@@ -70,7 +70,7 @@ def final_letter(alg):
 
 
 def first_letter_other_than_X(alg):
-    if "X" in alg:
+    if alg[0] == "X":
         alg = " ".join(alg.split()[1:-1])  # the substring beginning after the first whitespace and going to the end of the alg
     return alg[0]
 
