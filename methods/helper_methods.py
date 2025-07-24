@@ -99,7 +99,7 @@ def does_alg_contain_internal_YorZ(alg):
 
 
 def does_alg_contain_internal_X(alg):
-    if "X" in alg and not alg[0] == "X":
+    if "X" in alg and not alg[0] == "X" and not final_letter(alg) == "X":
         return True
     return False
 
