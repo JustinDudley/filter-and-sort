@@ -16,15 +16,19 @@ from methods__filtering.contains_T_not_in_UTU import contains_T_not_in_UTU
 from methods__filtering.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
+from methods__optional_filtering.alg_contains_combo__corner_LwithR_over17 import alg_contains_combo__corner_LwithR_over17
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_internalX_over17 import alg_contains_combo__corner_internalX_over17
 from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
+from methods__optional_filtering.alg_contains_combo__edge_S2_internalX import alg_contains_combo__edge_S2_internalX
 from methods__optional_filtering.alg_contains_combo__edge_S2_over14 import alg_contains_combo__edge_S2_over14
+from methods__optional_filtering.alg_contains_combo__edge_S_LwithR import alg_contains_combo__edge_S_LwithR
 from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
 from methods__optional_filtering.alg_contains_combo__edge_X_S_YorZsomewhere_over14 import alg_contains_combo__edge_X_S_YorZsomewhere_over14
 from methods__optional_filtering.alg_contains_combo__edge_X_T_rL_over15 import alg_contains_combo__edge_X_T_rL_over15
 from methods__optional_filtering.alg_contains_combo__edge_rL2_internalYorZ_over15 import alg_contains_combo__edge_rL2_internalYorZ_over15
 from methods__optional_filtering.alg_contains_combo__edge_rL_T_internalYorZ_over15 import alg_contains_combo__edge_rL_T_internalYorZ_over15
+from methods__optional_filtering.alg_contains_combo__edge_rL_T_u_internalX_over15 import alg_contains_combo__edge_rL_T_u_internalX_over15
 
 
 
@@ -35,7 +39,11 @@ this_combo_is_trash__5__edge_X_T_rL_over15 = True
 this_combo_is_trash__6__edge_rL_T_internalYorZ_over15 = True    
 this_combo_is_trash__7__edge_S2_over14 = True    
 this_combo_is_trash__8__edge_X_S_YorZsomewhere_over14 = True    
-this_combo_is_trash__9__corner_internalX_over17 = True    
+this_combo_is_trash__9__corner_internalX_over17 = True   
+this_combo_is_trash__10__corner_LwithR_over17 = True    
+this_combo_is_trash__11__edge_S2_internalX = True    
+this_combo_is_trash__12__edge_rL_T_u_internalX_over15 = True    
+this_combo_is_trash__13__edge_S_LwithR = True    
 
 
 # BOOLEANS FOR OPTIONAL FILTERING set to FALSE (unless doing some testing)
@@ -166,6 +174,31 @@ for alg in algs:
           if alg_contains_combo__corner_internalX_over17(alg_dict):
                 algs_to_trash.append(alg)
                 continue  
+
+    # KEEP:  Optional Rule 10 has been successfully tested.
+    if this_combo_is_trash__10__corner_LwithR_over17:
+          if alg_contains_combo__corner_LwithR_over17(alg_dict):
+                algs_to_trash.append(alg)
+                continue      
+    
+    # KEEP:  Optional Rule 11 has been successfully tested.
+    if this_combo_is_trash__11__edge_S2_internalX:
+          if alg_contains_combo__edge_S2_internalX(alg_dict):
+                algs_to_trash.append(alg)
+                continue     
+    
+    # KEEP:  Optional Rule 12 has been successfully tested.       
+    if this_combo_is_trash__12__edge_rL_T_u_internalX_over15:
+          if alg_contains_combo__edge_rL_T_u_internalX_over15(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
+    
+    # KEEP:  Optional Rule 13 has been successfully tested.          
+    if this_combo_is_trash__13__edge_S_LwithR:
+          if alg_contains_combo__edge_S_LwithR(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
+          
 
 
     # UNTESTED:
