@@ -21,6 +21,8 @@ STICKERS_SITTING_IN_CENTER_POSITIONS__GROUP_5 = ["red", "blu", "wht", "grn", "ye
 STICKERS_SITTING_IN_CENTER_POSITIONS__GROUP_6 = ["ora", "blu", "yel", "grn", "wht", "red"]
 
 
+# edge stickers d and b are swapped in this pattern:
+Tunnel_BD_Shell_Pattern =  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'a', 'd', 'c', 'b', 'm', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'e', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x']
 
 YorZ_turns = ["Y", "Z"]
 XorYorZ_turns = ["X", "Y", "Z"]

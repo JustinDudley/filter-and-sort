@@ -5,6 +5,7 @@ from methods.identify_alg import identify_alg
 from methods.sort_the_algs import sort_the_algs
 from methods.create_alg_dict import create_alg_dict
 from methods.input_is_homogeneous import input_is_homogeneous
+from methods.tunnel_is_other_than_edge_BD import tunnel_is_other_than_edge_BD
 from methods__filtering.alg_contains_combo__corner_rL_internalYorZ_over17 import alg_contains_combo__corner_rL_internalYorZ_over17
 from methods__filtering.alg_contains_combo__edge_S_over15 import alg_contains_combo__edge_S_over15
 from methods__filtering.alg_contains_combo__edge_S_rL_over14 import alg_contains_combo__edge_S_rL_over14
@@ -20,6 +21,7 @@ from methods__optional_filtering.alg_contains_combo__corner_LwithR_over17 import
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_internalX_over17 import alg_contains_combo__corner_internalX_over17
 from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
+from methods__optional_filtering.alg_contains_combo__edge_LwithR_over15 import alg_contains_combo__edge_LwithR_over15
 from methods__optional_filtering.alg_contains_combo__edge_S2_internalX import alg_contains_combo__edge_S2_internalX
 from methods__optional_filtering.alg_contains_combo__edge_S2_over14 import alg_contains_combo__edge_S2_over14
 from methods__optional_filtering.alg_contains_combo__edge_S_LwithR import alg_contains_combo__edge_S_LwithR
@@ -32,7 +34,7 @@ from methods__optional_filtering.alg_contains_combo__edge_rL_T_u_internalX_over1
 
 
 
-# BOOLEANS FOR OPTIONAL FILTERING set to TRUE (unless doing some testing)
+# BOOLEANS FOR OPTIONAL FILTERING that are set to TRUE (unless doing some testing)
 this_combo_is_trash__3__corner_X_rL_over17 = True  
 this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True 
 this_combo_is_trash__5__edge_X_T_rL_over15 = True    
@@ -44,16 +46,12 @@ this_combo_is_trash__10__corner_LwithR_over17 = True
 this_combo_is_trash__11__edge_S2_internalX = True    
 this_combo_is_trash__12__edge_rL_T_u_internalX_over15 = True    
 this_combo_is_trash__13__edge_S_LwithR = True    
+this_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__14__edge_LwithR_over15 = True    
 
 
-# BOOLEANS FOR OPTIONAL FILTERING set to FALSE (unless doing some testing)
+# BOOLEANS FOR OPTIONAL FILTERING that are set to FALSE (unless doing some testing)
 this_combo_is_trash__1__edge_T_rL_over15 = False   
 this_combo_is_trash__2__corner_rL_over17 = False   
-
-
-# can add more booleans for optional filtering
-# can add more booleans for optional filtering
-# can add more booleans for optional filtering
 
 
 
@@ -65,7 +63,7 @@ with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sor
 
 pattern, group_number, isCornerAlg = identify_alg(algs[0])
 input_is_homogeneous = input_is_homogeneous(algs)  
-
+tunnel_is_other_than_edge_BD = tunnel_is_other_than_edge_BD(pattern)  # look at pattern of algs[0], determine whether it is edge_BD, which is a more difficult pattern to find algs for and for which I need fewer restrictions and filters
 
 
 algs_to_trash = []
@@ -198,7 +196,16 @@ for alg in algs:
           if alg_contains_combo__edge_S_LwithR(alg_dict):
                 algs_to_trash.append(alg)
                 continue  
-          
+
+
+    # KEEP:  Optional Rule 14 has been successfully tested.  
+    # Also:  tunnel_is_other_than_edge_BD, in this context, has been successfully tested. (Wouldln't hurt to check it out again though)        
+    if tunnel_is_other_than_edge_BD:
+      if this_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__14__edge_LwithR_over15:
+            if alg_contains_combo__edge_LwithR_over15(alg_dict):
+                  algs_to_trash.append(alg)
+                  continue  
+
 
 
     # UNTESTED:
