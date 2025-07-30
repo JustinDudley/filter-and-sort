@@ -104,6 +104,12 @@ def does_alg_contain_internal_X(alg):
     return False
 
 
+def does_alg_contain_internal_WCR(alg):
+    if does_alg_contain_internal_YorZ(alg) or does_alg_contain_internal_X(alg):
+        return True
+    return False
+
+
 def does_alg_contain_internal_udfb(alg):
     for turn in udfb_turns:
         if turn in alg:
