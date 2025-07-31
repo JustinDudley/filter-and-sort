@@ -47,7 +47,7 @@ this_combo_is_trash__10__corner_LwithR_over17 = True
 this_combo_is_trash__11__edge_S2_internalX = True    
 this_combo_is_trash__12__edge_rL_T_u_internalX_over15 = True    
 this_combo_is_trash__13__edge_S_LwithR = True
-This_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__15__edge_T_internalWCR_over15 = True
+This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__15__edge_T_internalWCR_over15 = True
 # This_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__16__edge_rL_DL43_internalWCR_over15 = True
 
 
@@ -55,7 +55,7 @@ This_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__15__edge_T_internalWCR_over15 = T
 # BOOLEANS FOR OPTIONAL FILTERING that are set to FALSE (unless doing some testing)
 this_combo_is_trash__1__edge_T_rL_over15 = False   
 this_combo_is_trash__2__corner_rL_over17 = False   
-this_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__14__edge_LwithR_over15 = False    
+this_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__14__edge_LwithR_over15 = False    
 
 
 
@@ -204,19 +204,10 @@ for alg in algs:
 
     # KEEP:  Optional Rule 15 has been successfully tested.          
     if tunnel_is_other_than_edge_BD:
-      if This_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__15__edge_T_internalWCR_over15:
+      if This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__15__edge_T_internalWCR_over15:
             if alg_contains_combo__edge_T_internalWCR_over15(alg_dict):
                   algs_to_trash.append(alg)
                   continue 
-
-# NEITHER WRITTEN OUT OR TESTED. BUT GOOD!
-#     if tunnel_is_other_than_edge_BD:
-#       if this_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__14__edge_LwithR_over15:
-#             if alg_contains_combo__edge_LwithR_over15(alg_dict):
-#                   algs_to_trash.append(alg)
-#                   continue 
-
-# This_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__16__edge_rL_DL43_internalWCR_over15 = True
 
 
 
@@ -229,7 +220,7 @@ for alg in algs:
     # KEEP:  Optional Rule 14 has been successfully tested.  
     # Also:  tunnel_is_other_than_edge_BD, in this context, has been successfully tested. (Wouldln't hurt to check it out again though)        
     if tunnel_is_other_than_edge_BD:
-      if this_combo_is_trash_FOR_TUNNELS_OTHER_THAN_BD__14__edge_LwithR_over15:
+      if this_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__14__edge_LwithR_over15:
             if alg_contains_combo__edge_LwithR_over15(alg_dict):
                   algs_to_trash.append(alg)
                   continue  
