@@ -3,6 +3,7 @@ from methods.helper_methods import (
     does_alg_contain_LwithR,
     does_alg_contain_S, 
     does_alg_contain_T,
+    does_alg_contain_WCR,
     does_alg_contain_Y_or_Z_somewhere,
     does_alg_contain_internal_WCR,
     does_alg_contain_internal_X, 
@@ -35,6 +36,7 @@ def create_alg_dict(alg, isCornerAlg):
         "alg_contains_internal_X": does_alg_contain_internal_X(alg),
         "alg_contains_internal_YorZ": does_alg_contain_internal_YorZ(alg),
         "alg_contains_internal_WCR": does_alg_contain_internal_WCR(alg),
+        "alg_contains_WCR": does_alg_contain_WCR(alg),
         "alg_contains_internal_udfb": does_alg_contain_internal_udfb(alg),
         "alg_contains_Y_or_Z_somewhere": does_alg_contain_Y_or_Z_somewhere(alg),
     }

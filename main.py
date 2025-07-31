@@ -27,7 +27,7 @@ from methods__optional_filtering.alg_contains_combo__edge_S2_over14 import alg_c
 from methods__optional_filtering.alg_contains_combo__edge_S_LwithR import alg_contains_combo__edge_S_LwithR
 from methods__optional_filtering.alg_contains_combo__edge_T_internalWCR_over15 import alg_contains_combo__edge_T_internalWCR_over15
 from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
-from methods__optional_filtering.alg_contains_combo__edge_X_S_YorZsomewhere_over14 import alg_contains_combo__edge_X_S_YorZsomewhere_over14
+from methods__optional_filtering.alg_contains_combo__edge_S_WCR_over14 import alg_contains_combo__edge_S_WCR_over14
 from methods__optional_filtering.alg_contains_combo__edge_X_T_rL_over15 import alg_contains_combo__edge_X_T_rL_over15
 from methods__optional_filtering.alg_contains_combo__edge_rL2_internalYorZ_over15 import alg_contains_combo__edge_rL2_internalYorZ_over15
 from methods__optional_filtering.alg_contains_combo__edge_rL_T_internalYorZ_over15 import alg_contains_combo__edge_rL_T_internalYorZ_over15
@@ -41,7 +41,7 @@ this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True
 this_combo_is_trash__5__edge_X_T_rL_over15 = True    
 this_combo_is_trash__6__edge_rL_T_internalYorZ_over15 = True    
 this_combo_is_trash__7__edge_S2_over14 = True    
-this_combo_is_trash__8__edge_X_S_YorZsomewhere_over14 = True    
+this_combo_is_trash__8__edge_S_WCR_over14 = True    
 this_combo_is_trash__9__corner_internalX_over17 = True   
 this_combo_is_trash__10__corner_LwithR_over17 = True    
 this_combo_is_trash__11__edge_S2_internalX = True    
@@ -166,8 +166,8 @@ for alg in algs:
                 continue   
 
     # KEEP:  Optional Rule 8 has been successfully tested.
-    if this_combo_is_trash__8__edge_X_S_YorZsomewhere_over14:
-          if alg_contains_combo__edge_X_S_YorZsomewhere_over14(alg_dict):
+    if this_combo_is_trash__8__edge_S_WCR_over14:
+          if alg_contains_combo__edge_S_WCR_over14(alg_dict):
                 algs_to_trash.append(alg)
                 continue  
 
