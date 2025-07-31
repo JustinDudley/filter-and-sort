@@ -62,7 +62,7 @@ this_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__14__edge_LwithR_over15 = False
 
 
 startTime = datetime.datetime.now()
-with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/INPUT_file/final_alg_list_input.txt") as file_input:
+with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/INPUT_file/INPUT__pythonWidened_finished_algs.txt") as file_input:
     algs = file_input.read().splitlines() 
 
 pattern, group_number, isCornerAlg = identify_alg(algs[0])
