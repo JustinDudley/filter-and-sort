@@ -77,6 +77,7 @@ def number_of_instances_of_rL(alg):  # used to build alg_dict
 
 
 def number_of_instances_of_S(alg):  # used to build alg_dict
+    # could have used alg.count("S"), built-in function...
     for extra in [" ", "2", "'"]:
         alg = alg.replace(extra, "")
     alg_without_S = alg.replace("S", "")
@@ -121,4 +122,11 @@ def does_alg_contain_internal_udfb(alg):
         if turn in alg:
             if not first_letter_other_than_X(alg) == turn and not final_letter(alg) == turn:
                 return True
+    return False
+
+
+def does_alg_contain_DL43(alg):
+    if (alg.count("D") >=4 and alg.count("L") + alg.count("l") >=3) or (alg.count("D") >=3 and alg.count("L") + alg.count("l") >=4):
+        return True
+    
     return False
