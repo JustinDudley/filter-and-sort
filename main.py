@@ -38,7 +38,7 @@ from methods__optional_filtering.alg_contains_combo__edge_rL_T_u_internalX_over1
 
 # BOOLEANS FOR OPTIONAL FILTERING that are set to TRUE (unless doing some testing)
 this_combo_is_trash__3__corner_X_rL_over17 = True  
-this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True  #THIS IS A BAD FILTER !!!!! Change it to non_BD
+this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True  
 this_combo_is_trash__5__edge_X_T_rL_over15 = True    
 this_combo_is_trash__6__edge_rL_T_internalYorZ_over15 = True    
 this_combo_is_trash__7__edge_S2_over14 = True    
