@@ -21,6 +21,7 @@ from methods__optional_filtering.alg_contains_combo__corner_LwithR_over17 import
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_internalX_over17 import alg_contains_combo__corner_internalX_over17
 from methods__optional_filtering.alg_contains_combo__corner_rL_over17 import alg_contains_combo__corner_rL_over17
+from methods__optional_filtering.alg_contains_combo__corner_internalu_internalX_over16 import alg_contains_combo__corner_internalu_internalX_over16
 from methods__optional_filtering.alg_contains_combo__edge_LwithR_over15 import alg_contains_combo__edge_LwithR_over15
 from methods__optional_filtering.alg_contains_combo__edge_S2_internalX import alg_contains_combo__edge_S2_internalX
 from methods__optional_filtering.alg_contains_combo__edge_S2_over14 import alg_contains_combo__edge_S2_over14
@@ -50,6 +51,7 @@ this_combo_is_trash__12__edge_rL_T_u_internalX_over15 = True
 this_combo_is_trash__13__edge_S_LwithR = True
 This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__15__edge_T_internalWCR_over15 = True
 This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__16__edge_rL_DL43_internalWCR_over15 = True
+this_combo_is_trash__17__corner_internalu_internalX_over16 = True    
 
 
 
@@ -218,6 +220,11 @@ for alg in algs:
                   algs_to_trash.append(alg)
                   continue 
 
+
+    if this_combo_is_trash__17__corner_internalu_internalX_over16:
+          if alg_contains_combo__corner_internalu_internalX_over16(alg_dict):
+                algs_to_trash.append(alg)
+                continue  
 
 
 

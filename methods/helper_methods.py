@@ -125,6 +125,13 @@ def does_alg_contain_internal_udfb(alg):
     return False
 
 
+def does_alg_contain_internal_u(alg):
+    if "u" in alg:
+        if not first_letter_other_than_X(alg) == "u" and not final_letter(alg) == "u":
+            return True
+    return False
+
+
 def does_alg_contain_DL43(alg):
     if (alg.count("D") >=4 and alg.count("L") + alg.count("l") >=3) or (alg.count("D") >=3 and alg.count("L") + alg.count("l") >=4):
         return True
