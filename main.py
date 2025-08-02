@@ -50,17 +50,17 @@ this_combo_is_trash__10__corner_LwithR_over17 = True
 this_combo_is_trash__11__edge_S2_internalX = True    
 this_combo_is_trash__12__edge_rL_T_u_internalX_over15 = True    
 this_combo_is_trash__13__edge_S_LwithR = True
-This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__15__edge_T_internalWCR_over15 = True
-This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__16__edge_rL_DL43_internalWCR_over15 = True
+This_combo_is_trash__15__INTENDED_FOR_NON_BD_TUNNELS__edge_T_internalWCR_over15 = True
+This_combo_is_trash__16__INTENDED_FOR_NON_BD_TUNNELS__edge_rL_DL43_internalWCR_over15 = True
 this_combo_is_trash__17__corner_internalu_internalX_over16 = True    
-This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__18__edge_internalu_internalX_over15 = True
+This_combo_is_trash__18__INTENDED_FOR_NON_BD_TUNNELS__edge_internalu_internalX_over15 = True
 
 
 
 # BOOLEANS FOR OPTIONAL FILTERING that are set to FALSE (unless doing some testing)
 this_combo_is_trash__1__edge_T_rL_over15 = False   
 this_combo_is_trash__2__corner_rL_over17 = False   
-this_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__14__edge_LwithR_over15 = False    
+this_combo_is_trash__14__INTENDED_FOR_NON_BD_TUNNELS__edge_LwithR_over15 = False    
 
 
 
@@ -209,7 +209,7 @@ for alg in algs:
 
     # KEEP:  Optional Rule 15 has been successfully tested.          
     if tunnel_is_other_than_edge_BD:
-      if This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__15__edge_T_internalWCR_over15:
+      if This_combo_is_trash__15__INTENDED_FOR_NON_BD_TUNNELS__edge_T_internalWCR_over15:
             if alg_contains_combo__edge_T_internalWCR_over15(alg_dict):
                   algs_to_trash.append(alg)
                   continue 
@@ -222,7 +222,7 @@ for alg in algs:
 # WEIRD SPACING. FIX AND TEST
     # KEEP:  Optional Rule 16 has been successfully tested.
     if tunnel_is_other_than_edge_BD:
-      if This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__16__edge_rL_DL43_internalWCR_over15:
+      if This_combo_is_trash__16__INTENDED_FOR_NON_BD_TUNNELS__edge_rL_DL43_internalWCR_over15:
             if alg_contains_combo__edge_rL_DL43_internalWCR_over15(alg_dict):
                   algs_to_trash.append(alg)
                   continue 
@@ -237,7 +237,7 @@ for alg in algs:
 
     # KEEP:  Optional Rule 18 has been successfully tested.
     if tunnel_is_other_than_edge_BD:
-          if This_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__18__edge_internalu_internalX_over15:
+          if This_combo_is_trash__18__INTENDED_FOR_NON_BD_TUNNELS__edge_internalu_internalX_over15:
                 if alg_contains_combo__edge_internalu_internalX_over15(alg_dict):
                       algs_to_trash.append(alg)
                       continue  
@@ -252,7 +252,7 @@ for alg in algs:
     # KEEP:  Optional Rule 14 has been successfully tested.  
     # Also:  tunnel_is_other_than_edge_BD, in this context, has been successfully tested. (Wouldln't hurt to check it out again though)        
     if tunnel_is_other_than_edge_BD:
-      if this_combo_is_trash__INTENDED_FOR_NON_BD_TUNNELS__14__edge_LwithR_over15:
+      if this_combo_is_trash__14__INTENDED_FOR_NON_BD_TUNNELS__edge_LwithR_over15:
             if alg_contains_combo__edge_LwithR_over15(alg_dict):
                   algs_to_trash.append(alg)
                   continue  
