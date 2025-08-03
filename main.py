@@ -26,6 +26,7 @@ from methods__optional_filtering.alg_contains_combo__edge_LwithR_over15 import a
 from methods__optional_filtering.alg_contains_combo__edge_S2_internalX import alg_contains_combo__edge_S2_internalX
 from methods__optional_filtering.alg_contains_combo__edge_S2_over14 import alg_contains_combo__edge_S2_over14
 from methods__optional_filtering.alg_contains_combo__edge_S_LwithR import alg_contains_combo__edge_S_LwithR
+from methods__optional_filtering.alg_contains_combo__edge_T2_DL22_internalWCR_over14 import alg_contains_combo__edge_T2_DL22_internalWCR_over14
 from methods__optional_filtering.alg_contains_combo__edge_T_internalWCR_over15 import alg_contains_combo__edge_T_internalWCR_over15
 from methods__optional_filtering.alg_contains_combo__edge_T_rL_over15 import alg_contains_combo__edge_T_rL_over15
 from methods__optional_filtering.alg_contains_combo__edge_S_WCR_over14 import alg_contains_combo__edge_S_WCR_over14
@@ -56,6 +57,7 @@ This_combo_is_trash__16__INTENDED_FOR_NON_BD_TUNNELS__edge_rL_DL43_internalWCR_o
 this_combo_is_trash__17__corner_internalu_internalX_over16 = True    
 This_combo_is_trash__18__INTENDED_FOR_NON_BD_TUNNELS__edge_internalu_internalX_over15 = True
 This_combo_is_trash__19__INTENDED_FOR_NON_BD_TUNNELS__edge_internalu_T_over14 = True
+This_combo_is_trash__20__INTENDED_FOR_NON_BD_TUNNELS__edge_T2_DL22_internalWCR_over14 = True
 
 
 
@@ -249,6 +251,14 @@ for alg in algs:
     if tunnel_is_other_than_edge_BD:
           if This_combo_is_trash__19__INTENDED_FOR_NON_BD_TUNNELS__edge_internalu_T_over14:
                 if alg_contains_combo__edge_internalu_T_over14(alg_dict):
+                      algs_to_trash.append(alg)
+                      continue  
+
+
+    # KEEP:  Optional Rule 20 has been successfully tested.
+    if tunnel_is_other_than_edge_BD:
+          if This_combo_is_trash__20__INTENDED_FOR_NON_BD_TUNNELS__edge_T2_DL22_internalWCR_over14:
+                if alg_contains_combo__edge_T2_DL22_internalWCR_over14(alg_dict):
                       algs_to_trash.append(alg)
                       continue  
 

@@ -85,6 +85,10 @@ def number_of_instances_of_S(alg):  # used to build alg_dict
     return number_of_instances
 
 
+def number_of_instances_of_T(alg):
+    return alg.count("T")
+
+
 def does_alg_contain_Y_or_Z_somewhere(alg):
     if "Y" in alg or "Z" in alg:
         return True
@@ -134,6 +138,13 @@ def does_alg_contain_internal_u(alg):
 
 def does_alg_contain_DL43(alg):
     if (alg.count("D") >=4 and alg.count("L") + alg.count("l") >=3) or (alg.count("D") >=3 and alg.count("L") + alg.count("l") >=4):
+        return True
+    
+    return False
+
+
+def does_alg_contain_DL22(alg):
+    if alg.count("D") >=2 and alg.count("L") + alg.count("l") >=2:
         return True
     
     return False
