@@ -80,7 +80,7 @@ tunnel_is_other_than_edge_BD = tunnel_is_other_than_edge_BD(pattern)  # look at 
 algs_to_trash = []
 for alg in algs:
     
-    #PRELIMINARIES
+    #  (0) PRELIMINARIES
     alg = alg.strip()
     if not input_is_homogeneous:
           pattern, group_number, isCornerAlg = identify_alg(alg)
@@ -88,7 +88,7 @@ for alg in algs:
 
 
 
-    # BASELINE FILTERING
+    #  (1) BASELINE FILTERING
     if contains_bad_turns(alg):
          algs_to_trash.append(alg)
          continue
@@ -140,7 +140,7 @@ for alg in algs:
 
 
 
-    # OPTIONAL FILTERING
+    #  (2) OPTIONAL FILTERING
 
     # KEEP:  Optional Rule 3 has been successfully tested.
     if this_combo_is_trash__3__corner_X_rL_over17:
