@@ -5,7 +5,7 @@ from methods.identify_alg import identify_alg
 from methods.sort_the_algs import sort_the_algs
 from methods.create_alg_dict import create_alg_dict
 from methods.input_is_homogeneous import input_is_homogeneous
-from methods.tunnel_is_other_than_edge_BD import tunnel_is_other_than_edge_BD
+from methods.tunnel_is_something_other_than_edge_BD import tunnel_is_something_other_than_edge_BD
 from methods__filtering.alg_contains_combo__corner_rL_internalYorZ_over17 import alg_contains_combo__corner_rL_internalYorZ_over17
 from methods__filtering.alg_contains_combo__edge_S_over15 import alg_contains_combo__edge_S_over15
 from methods__filtering.alg_contains_combo__edge_S_rL_over14 import alg_contains_combo__edge_S_rL_over14
@@ -73,8 +73,8 @@ with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sor
     algs = file_input.read().splitlines() 
 
 pattern, group_number, isCornerAlg = identify_alg(algs[0])
+tunnel_is_other_than_edge_BD = tunnel_is_something_other_than_edge_BD(pattern)  # look at pattern of algs[0], determine whether it is edge_BD, which is a more difficult pattern to find algs for and for which I need fewer restrictions and filters
 input_is_homogeneous = input_is_homogeneous(algs)  
-tunnel_is_other_than_edge_BD = tunnel_is_other_than_edge_BD(pattern)  # look at pattern of algs[0], determine whether it is edge_BD, which is a more difficult pattern to find algs for and for which I need fewer restrictions and filters
 
 
 algs_to_trash = []
@@ -84,6 +84,7 @@ for alg in algs:
     alg = alg.strip()
     if not input_is_homogeneous:
           pattern, group_number, isCornerAlg = identify_alg(alg)
+          tunnel_is_other_than_edge_BD = tunnel_is_something_other_than_edge_BD(pattern) # even in test scenario, BD versus non-BD is taken into account when decided whether to filter out
     alg_dict = create_alg_dict(alg, isCornerAlg)  # The longest a run of this program is ever going to take is about 8 seconds. I can make it 4 times faster, 2 seconds, by putting this method below "contains_bad_turns" because that probably eliminates 95% of all the algs by itself. But building the alg_dict at the top looks SO much cleaner for the flow of Main
 
 
