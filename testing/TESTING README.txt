@@ -1,11 +1,11 @@
 TESTING README
 
-Newest material:
+Newest material (Aug. 3 2025):
 The input file has all sorts of alg examples designed to trip up the 
 app if the app isn't built right. Does it have enough variety to really catch everything?  Probably not. But it's close.
 
 The FIRST test output file is a BASELINE output file, for the existing baseline (non-optional) tests. If I add more restrictions to the baseline,
-I'll need to change the output file. 
+or add algs to the input file, I'll need to change the output file. 
 
 The SECOND test output file includes optional filters.  Here is how the filter booleans are set for the test. (These are the 
 filters I used to generate the 72 repo_2 files which I HOPE will turn out to be the final published files)
