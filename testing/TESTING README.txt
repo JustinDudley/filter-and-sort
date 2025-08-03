@@ -8,18 +8,29 @@ The FIRST test output file is a BASELINE output file, for the existing baseline 
 I'll need to change the output file. 
 
 The SECOND test output file includes optional filters.  Here is how the filter booleans are set for the test. (These are the 
-filters I used to generate the first major repo_2 file with 50+ columns)
+filters I used to generate the 72 repo_2 files which I HOPE will turn out to be the final published files)
 
 ****************
 this_combo_is_trash__3__corner_X_rL_over17 = True  
-this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True 
+this_combo_is_trash__4__edge_rL2_internalYorZ_over15 = True  
 this_combo_is_trash__5__edge_X_T_rL_over15 = True    
 this_combo_is_trash__6__edge_rL_T_internalYorZ_over15 = True    
 this_combo_is_trash__7__edge_S2_over14 = True    
-this_combo_is_trash__8__edge_X_S_YorZsomewhere_over14 = True    
+this_combo_is_trash__8__edge_S_WCR_over14 = True    
+this_combo_is_trash__9__corner_internalX_over17 = True   
+this_combo_is_trash__10__corner_LwithR_over17 = True    
+this_combo_is_trash__11__edge_S2_internalX = True    
+this_combo_is_trash__12__edge_rL_T_u_internalX_over15 = True    
+this_combo_is_trash__13__edge_S_LwithR = True
+This_combo_is_trash__15__INTENDED_FOR_NON_BD_TUNNELS__edge_T_internalWCR_over15 = True
+This_combo_is_trash__16__INTENDED_FOR_NON_BD_TUNNELS__edge_rL_DL43_internalWCR_over15 = True
+this_combo_is_trash__17__corner_internalu_internalX_over16 = True    
+This_combo_is_trash__18__INTENDED_FOR_NON_BD_TUNNELS__edge_internalu_internalX_over15 = True
+This_combo_is_trash__19__INTENDED_FOR_NON_BD_TUNNELS__edge_internalu_T_over14 = True
+This_combo_is_trash__20__INTENDED_FOR_NON_BD_TUNNELS__edge_T2_DL22_internalWCR_over14 = True
 
-this_combo_is_trash__1__edge_T_rL_over15 = False   
-this_combo_is_trash__2__corner_rL_over17 = False  
+
+this_combo_is_trash__14__INTENDED_FOR_NON_BD_TUNNELS__edge_LwithR_over15 = False   
 ****************
 
 
