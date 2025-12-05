@@ -13,7 +13,7 @@ from methods.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 startTime = datetime.datetime.now()  # to monitor performance of program
 
 
-with open("/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/INPUT_file/final_alg_list_input.txt") as file_input:
+with open("INPUT_file/final_alg_list_input.txt") as file_input:
     algs = file_input.read().splitlines() 
 
 
@@ -61,14 +61,14 @@ sorted_algs = sort_the_algs(filtered_algs)
 
 # WRITE TO FILE:  filtered algs
 dt = datetime.datetime.now()
-output_filename = '/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/OUTPUT_files/%s.txt'%(dt.strftime("%a") + "_" + dt.strftime("%I") + ":" + dt.strftime("%M") + ":" + dt.strftime("%S") + "_output")
+output_filename = 'OUTPUT_files/%s.txt'%(dt.strftime("%a") + "_" + dt.strftime("%I") + "h-" + dt.strftime("%M") + "m-" + dt.strftime("%S") + "s_output")
 with open(output_filename, "x") as output_file:
 	for alg in filtered_algs:
 		output_file.write(f"{alg}\n")
 
 
 # WRITE TO FILE:  filtered AND SORTED algs
-sorted_output_filename = '/Users/justindudley/dev/cube/Alg_Slice_And_Widen_daddy/filter-and-sort/OUTPUT_files/%s.txt'%(dt.strftime("%a") + "_" + dt.strftime("%I") + ":" + dt.strftime("%M") + ":" + dt.strftime("%S") + "_SORTED_output")
+sorted_output_filename = 'OUTPUT_files/%s.txt'%(dt.strftime("%a") + "_" + dt.strftime("%I") + "h-" + dt.strftime("%M") + "m-" + dt.strftime("%S") + "s_SORTED_output")
 with open(sorted_output_filename, "x") as sorted_output_file:
 	for alg in sorted_algs:
 		sorted_output_file.write(f"{alg}\n")
