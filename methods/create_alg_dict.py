@@ -15,6 +15,8 @@ from methods.helper_methods import (
     does_alg_contain_u, 
     does_alg_have_leading_X, 
     get_length_without_WCRs,
+    number_of_ZY_pairs,
+    number_of_ZY_sandwiches,
     number_of_instances_of_S,
     number_of_instances_of_T,
     number_of_instances_of_rL
@@ -37,6 +39,8 @@ def create_alg_dict(alg, isCornerAlg):
         "alg_contains_u": does_alg_contain_u(alg),
         "number_of_instances_of_S": number_of_instances_of_S(alg),
         "number_of_instances_of_T": number_of_instances_of_T(alg),
+        "number_of_ZY_pairs": number_of_ZY_pairs(alg),
+        "number_of_ZY_sandwiches": number_of_ZY_sandwiches(alg),
         "alg_contains_internal_X": does_alg_contain_internal_X(alg),
         "alg_contains_internal_YorZ": does_alg_contain_internal_YorZ(alg),
         "alg_contains_internal_WCR": does_alg_contain_internal_WCR(alg),

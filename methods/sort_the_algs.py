@@ -1,5 +1,5 @@
 
-from methods.helper_methods import does_alg_contain_rL, final_letter, first_letter_other_than_X, get_length_without_WCRs
+from methods.helper_methods import does_alg_contain_rL, final_letter, first_letter_other_than_X, get_length_without_WCRs, number_of_ZY_pairs, number_of_ZY_sandwiches
 from variables.constants import YorZ_turns, udfb_turns, XorYorZ_turns
 
 
@@ -14,7 +14,7 @@ def sort_the_algs(algs):
 
     sorted_algs = sorted(algs, key=lambda alg: (
         "S" not in alg,  # ALL non-S algs at the top
-        not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udfb_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision
+        not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udfb_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision (and are currently highlighted yellow in my spreadsheet's conditional formatting)
         "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udfb (eg. none with both Z and d), so this places ALL YorZ algs above ALL udfb algs
 
 
@@ -22,12 +22,21 @@ def sort_the_algs(algs):
         first_letter_other_than_X(alg) in YorZ_turns or first_letter_other_than_X(alg) in udfb_turns, 
         final_letter(alg) in YorZ_turns or final_letter(alg) in udfb_turns, 
 
+
+        # the three TRELLIS criteria go here. These criteria are unique to THIS branch of the app
+        # For the Repo_2 spreadsheet doc, putting these criteria here means that within a highlighted color, trellis and near-trellis algs appear at the top regardless of length, leading_X, or anything else.
+        number_of_ZY_pairs(alg) == 0,  # the true TRELLIS algs. Nothing but alternating X and non-X turns (except: internal whole-cube-rotations DO muck things up.)
+        number_of_ZY_pairs(alg) == 1,  # There exists just one pair such as U F, and other than that the alg is a trellis alg
+        number_of_ZY_sandwiches(alg) == 1 and number_of_ZY_pairs == 2,  # There exists one ZYZ or YZY sandwich. For instance, U F U'. The pairs clause is included because overlapping sandwiches such as U F U' F are counted as two sandwiches as currently coded, and we don't want those.
+
+
         # for YorZ and for udfb:  Start with non-X algs, then go to leading_X algs
         "X" not in alg,
         alg[0] == "X",
 
-        "X2 Y" not in alg,  # will apply only to the leading YorZ area. Want these bad prep moves at the bottom
-        "X2 Z" not in alg,  # will apply only to the leading YorZ area. Want these bad prep moves at the bottom
+        # will apply only to the leading YorZ area. Want these bad prep moves at the bottom
+        "X2 Y" not in alg,  
+        "X2 Z" not in alg, 
 
 
         "T" not in alg,

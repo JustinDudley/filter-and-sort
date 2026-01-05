@@ -1,6 +1,6 @@
 
 import copy
-from variables.constants import YorZ_turns, udfb_turns
+from variables.constants import YorZ_turns, ZY_pairs, ZY_sandwiches, udfb_turns
 
 
 def get_length_without_WCRs(alg):
@@ -87,6 +87,28 @@ def number_of_instances_of_S(alg):  # used to build alg_dict
 
 def number_of_instances_of_T(alg):
     return alg.count("T")
+
+
+# this is sloppy for patterns such as U F U F, but will do for my purposes
+# this method doesn't currently appear in any filtering rules. It is only used in sort-the-algs
+def number_of_ZY_pairs(alg):
+    for extra in [" ", "2", "'"]:
+        alg = alg.upper().replace(extra, "")
+    pair_count = 0
+    for pair in ZY_pairs:
+        pair_count += alg.count(pair)  # if UF appears twice, for instance, pair_count is increased by 2. If there is ALSO a DF later in the for-loop, pair_count will be increased (by 1) to 3
+    return pair_count
+
+
+# this is sloppy for patterns such as U F U F, but will do for my purposes
+# this method doesn't currently appear in any filtering rules. It is only used in sort-the-algs
+def number_of_ZY_sandwiches(alg):
+    for extra in [" ", "2", "'"]:
+        alg = alg.upper().replace(extra, "")
+    sandwich_count = 0
+    for sandwich in ZY_sandwiches:
+        sandwich_count += alg.count(sandwich)  # if UFU' appears twice, for instance, pair_count is increased by 2. If there is ALSO a DFD later in the for-loop, sandwich_count will be increased (by 1) to 3
+    return sandwich_count
 
 
 def does_alg_contain_Y_or_Z_somewhere(alg):

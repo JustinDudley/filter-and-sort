@@ -29,6 +29,12 @@ XorYorZ_turns = ["X", "Y", "Z"]
 udfb_turns = ["u", "d", "f", "b"]
 
 
+# ZY_pairs are pairs of turns where the X-axis isn't involved, creating a non-trellis pattern
+#ZY_sandwiches have an additional, third, turn. For instance, U F U', or F' D F'
+ZY_pairs = ["UF", "UB", "FU", "FD", "DF", "DB", "BU", "BD"]
+ZY_sandwiches = ["UFU", "UBU", "FUF", "FDF", "DFD", "DBD", "BUB", "BDB"]
+
+
 REPLACEMENTS_DICT = {
 "2'": "2",
 "M ": "T' ",
