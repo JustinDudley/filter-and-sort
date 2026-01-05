@@ -23,7 +23,7 @@ def sort_the_algs(algs):
         final_letter(alg) in YorZ_turns or final_letter(alg) in udfb_turns, 
 
 
-        # the three TRELLIS criteria go here. These criteria are unique to THIS branch of the app
+        # the three TRELLIS criteria go here. These criteria are NEW in THIS branch of the app. They are not in the grand_old_branch__...
         # For the Repo_2 spreadsheet doc, putting these criteria here means that within a highlighted color, trellis and near-trellis algs appear at the top regardless of length, leading_X, or anything else.
         number_of_ZY_pairs(alg) == 0,  # the true TRELLIS algs. Nothing but alternating X and non-X turns (except: internal whole-cube-rotations DO muck things up.)
         number_of_ZY_pairs(alg) == 1,  # There exists just one pair such as U F, and other than that the alg is a trellis alg
