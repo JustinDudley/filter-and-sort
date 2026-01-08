@@ -27,7 +27,7 @@ def sort_the_algs(algs):
         # For the Repo_2 spreadsheet doc, putting these criteria here means that within a highlighted color, trellis and near-trellis algs appear at the top regardless of length, leading_X, or anything else.
         number_of_ZY_pairs(alg) == 0,  # the true TRELLIS algs. Nothing but alternating X and non-X turns (except: internal whole-cube-rotations DO muck things up.)
         number_of_ZY_pairs(alg) == 1,  # There exists just one pair such as U F, and other than that the alg is a trellis alg
-        number_of_ZY_sandwiches(alg) == 1 and number_of_ZY_pairs == 2,  # There exists one ZYZ or YZY sandwich. For instance, U F U'. The pairs clause is included because overlapping sandwiches such as U F U' F are counted as two sandwiches as currently coded, and we don't want those.
+        number_of_ZY_sandwiches(alg) == 1 and number_of_ZY_pairs(alg) == 2,  # There exists one ZYZ or YZY sandwich. For instance, U F U'. The pairs clause is included because overlapping sandwiches such as U F U' F are counted as two sandwiches as currently coded, and we don't want those.
 
 
         # for YorZ and for udfb:  Start with non-X algs, then go to leading_X algs
