@@ -1,0 +1,50 @@
+U R H' R' U2 D L U R2 F T2 F' R2 D' B'
+U l S' l' U2 D L U R2 F T2 F' R2 D' B'
+U l S' R' F2 B r U R2 F T2 F' R2 D' B'
+U R H' R' U2 D L U l2 B T2 B' l2 D' B'
+U R H' l' B2 F r D l2 F T2 F' R2 D' B'
+U R H' l' B2 F r D R2 B T2 B' l2 D' B'
+U l S' l' U2 D L U l2 B T2 B' l2 D' B'
+U l S' R' F2 B r U l2 B T2 B' l2 D' B'
+U l F2 T' F2 L' U B' R F' H F R' B U2
+U R U2 T' U2 r' U B' R F' H F R' B U2
+U R U2 T' U2 L' B D' l F' H F R' B U2
+U l F2 T' F2 r' F U' R D' S D l' B U2
+U l F2 T' F2 L' U B' l D' S D l' B U2
+U R U2 T' U2 r' U B' l D' S D l' B U2
+U R U' F' T' F2 T' F' U R' U' B H B'
+U l F' D' T' D2 T' D' F l' U' B H B'
+U R U' R2 B' H' B R2 U R' U' F' T2 F
+U l F' R2 U' S' U R2 F l' U' F' T2 F
+U R U' l2 F' H F l2 U R' U' F' T2 F
+U l F' l2 D' S D l2 F l' U' F' T2 F
+U l D L2 U' S' U L2 U D T' D2 U' L' U'
+U R F L2 B' H' B L2 B F T' F2 B' r' U'
+U l D r2 D' S D r2 U D T' D2 U' L' U'
+U R F r2 F' H F r2 B F T' F2 B' r' U'
+U l D L2 U' S' D' T' D U L2 D' L' U'
+U R F L2 B' H' F' T' F B L2 F' r' U'
+U l D r2 D' S U' T' U D r2 D' L' U'
+U R F r2 F' H B' T' B F r2 F' r' U'
+U R F r D' S D L' U' L' D U2 T' H2 Z2
+U l D L U' S' U r' B' r' D U2 T' H2 Z2
+U R F r D' S D L' U' L' D U2 T' Z2 H2
+U l D L U' S' U r' B' r' D U2 T' Z2 H2
+U R F r D' S D L' U' L' D U2 Z2 T H2
+U l D L U' S' U r' B' r' D U2 Z2 T H2
+U R F r D' S D L' U' L' D Z2 D2 T H2
+U l D L U' S' U r' B' r' D Z2 D2 T H2
+U R F r D' S D L' U' L' Z2 U D2 T H2
+U l D L U' S' U r' B' r' Z2 U D2 T H2
+U R F r D' S D L' U' Z2 R' U D2 T H2
+U R F L B' H' B L' F' Y2 l' U D2 T H2
+U l D r B' H' B L' F' Y2 l' U D2 T H2
+U R F r D' S D r' F' Y2 l' U D2 T H2
+U R F r D' S D L' Z2 D' R' U D2 T H2
+U R F L B' H' B L' Y2 B' l' U D2 T H2
+U l D r B' H' B L' Y2 B' l' U D2 T H2
+U R F r D' S D r' Y2 B' l' U D2 T H2
+U R F r D' S D Z2 R' D' R' U D2 T H2
+U R F L B' H' B Y2 l' D' R' U D2 T H2
+U R F L B' H' B Y2 R' B' l' U D2 T H2
+U l D r B' H' B Y2 l' D' R' U D2 T H2

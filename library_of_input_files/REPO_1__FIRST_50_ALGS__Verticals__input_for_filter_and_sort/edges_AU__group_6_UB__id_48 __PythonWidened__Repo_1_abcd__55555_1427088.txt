@@ -1,0 +1,50 @@
+U R H' F R' B' D' T B' L' B D B2 F' L' Z
+U l S' D l' B' D' T B' L' B D B2 F' L' Z
+U R H' F l' D' F' T D' r' B D B2 F' L' Z
+U R H' F l' D' F' T D' L' D F D2 U' r' Z
+U R H' F R' B' D' T B' L' B D Z B2 F' U'
+U l S' D l' B' D' T B' L' B D Z B2 F' U'
+U R H' F l' D' F' T D' r' B D Z B2 F' U'
+U R H' F R' B' D' T B' L' Z B L B2 F' U'
+U R H' F R' B' D' T B' L' f L B2 F' U'
+U l S' D l' B' D' T B' L' Z B L B2 F' U'
+U l S' D l' B' D' T B' L' f L B2 F' U'
+U l S' D R' U' B' T U' L' Y' U r B2 F' U'
+U l S' D R' U' B' T U' L' d r B2 F' U'
+U R H' F l' D' F' T D' r' Z B L B2 F' U'
+U R H' F l' D' F' T D' r' f L B2 F' U'
+U R H' F R' B' D' T B' r' Y' U r B2 F' U'
+U R H' F R' B' D' T B' r' d r B2 F' U'
+U l S' D l' B' D' T B' r' Y' U r B2 F' U'
+U l S' D l' B' D' T B' r' d r B2 F' U'
+U R H' F R' B' D' T Z B' U' B L B2 F' U'
+U l S' D l' B' D' T Z B' U' B L B2 F' U'
+U l S' D R' U' B' T Y' U' F' U r B2 F' U'
+U R H' F R' B' D' Z H' B' U' B L B2 F' U'
+U l S' D l' B' D' Z H' B' U' B L B2 F' U'
+U l S' D R' U' B' Y' S' U' F' U r B2 F' U'
+U R H' F R' Z B' L' H' B' U' B L B2 F' U'
+U l S' D l' Z B' L' H' B' U' B L B2 F' U'
+U l S' D R' Y' U' L' S' U' F' U r B2 F' U'
+U R H' F l' Y D' r' H' B' U' B L B2 F' U'
+U R H' F R' Z B' r' S' U' F' U r B2 F' U'
+U l S' D l' Z B' r' S' U' F' U r B2 F' U'
+U R H' Z F D' B' L' H' B' U' B L B2 F' U'
+U l S' Y' D B' U' L' S' U' F' U r B2 F' U'
+U R H' Z F D' B' r' S' U' F' U r B2 F' U'
+U R Z T' F D' B' L' H' B' U' B L B2 F' U'
+U l Y' T' D B' U' L' S' U' F' U r B2 F' U'
+U R Z T' F D' B' r' S' U' F' U r B2 F' U'
+U Z D T' F D' B' L' H' B' U' B L B2 F' U'
+U Z D T' F D' B' r' S' U' F' U r B2 F' U'
+Z R D T' F D' B' L' H' B' U' B L B2 F' U'
+Z l B T' D B' U' L' S' U' F' U r B2 F' U'
+Z R D T' F D' B' r' S' U' F' U r B2 F' U'
+U l F2 U' L B H2 B' L' U F2 R' F' L' R
+U R U2 B' L D S2 D' r' U F2 R' F' L' R
+U R U2 B' L D S2 D' L' B U2 R' U' r' R
+U R U2 B' L D S2 D' L' B U2 R' U' L' l
+U l F2 U' r D S2 D' r' U F2 R' F' L' R
+U l F2 U' r D S2 D' L' B U2 R' U' r' R
+U l F2 U' r D S2 D' L' B U2 R' U' L' l
+U l F2 U' L B H2 B' r' F D2 l' F' L' R

@@ -1,0 +1,50 @@
+U R F L' D2 F T F' D2 L F' R' U S2 U2
+U l D L' B2 D T D' B2 r F' R' U S2 U2
+U l D L' B2 D T D' B2 L D' l' U S2 U2
+U R F r' B2 D T D' B2 r F' R' U S2 U2
+U R F r' B2 D T D' B2 L D' l' U S2 U2
+U l D r' U2 B T B' U2 r D' l' U S2 U2
+U R r F2 D' T' U F2 U B2 D' T U F2 L2 Z2
+U l L B2 U' T' D B2 D F2 U' T D B2 r2 Z2
+U R r F2 D' T' U F2 U B2 D' T U Z2 F2 R2
+U R r F2 D' T' U F2 U B2 D' T U b2 R2
+U l L B2 U' T' D B2 D F2 U' T D Z2 B2 l2
+U l L B2 U' T' D B2 D F2 U' T D f2 l2
+U R r F2 D' T' U F2 U B2 D' T Z2 D F2 R2
+U l L B2 U' T' D B2 D F2 U' T Z2 U B2 l2
+U R r F2 D' T' U F2 U B2 D' Z2 T' D F2 R2
+U l L B2 U' T' D B2 D F2 U' Z2 T' U B2 l2
+U R r F2 D' T' U F2 U Z2 B2 U' T' D F2 R2
+U R r F2 D' T' U F2 U f2 U' T' D F2 R2
+U l L B2 U' T' D B2 D Z2 F2 D' T' U B2 l2
+U l L B2 U' T' D B2 D b2 D' T' U B2 l2
+U R r F2 D' T' U Z2 F2 D B2 U' T' D F2 R2
+U R r F2 D' T' U b2 D B2 U' T' D F2 R2
+U l L B2 U' T' D Z2 B2 U F2 D' T' U B2 l2
+U l L B2 U' T' D f2 U F2 D' T' U B2 l2
+U R r F2 D' T' Z2 D F2 D B2 U' T' D F2 R2
+U l L B2 U' T' Z2 U B2 U F2 D' T' U B2 l2
+U R r F2 D' Z2 T D F2 D B2 U' T' D F2 R2
+U l L B2 U' Z2 T U B2 U F2 D' T' U B2 l2
+U R r Z2 F2 U' T D F2 D B2 U' T' D F2 R2
+U R r b2 U' T D F2 D B2 U' T' D F2 R2
+U l L Z2 B2 D' T U B2 U F2 D' T' U B2 l2
+U l L f2 D' T U B2 U F2 D' T' U B2 l2
+U l Z2 R B2 D' T U B2 U F2 D' T' U B2 l2
+U R Y2 l B2 D' T U B2 U F2 D' T' U B2 l2
+Y2 U r R F2 U' T D F2 D B2 U' T' D F2 R2
+Y2 U L l B2 D' T U B2 U F2 D' T' U B2 l2
+U l L B2 U' T' D B2 D F2 U' T D B2 L2 Y2
+U R r F2 D' T' U F2 U B2 D' T U F2 r2 Y2
+U l L B2 U' T' D B2 D F2 U' T D B2 Y2 R2
+U R r F2 D' T' U F2 U B2 D' T U F2 Y2 l2
+U l L B2 U' T' D B2 D F2 U' T Y2 D F2 R2
+U R r F2 D' T' U F2 U B2 D' T Y2 U B2 l2
+U l L B2 U' T' D B2 D F2 Y2 U' T' D F2 R2
+U R r F2 D' T' U F2 U B2 Y2 D' T' U B2 l2
+U l L B2 U' T' D B2 Y2 D B2 U' T' D F2 R2
+U R r F2 D' T' U F2 Y2 U F2 D' T' U B2 l2
+U l L B2 U' T' Y2 D F2 D B2 U' T' D F2 R2
+U R r F2 D' T' Y2 U B2 U F2 D' T' U B2 l2
+U l L B2 Y2 U' T D F2 D B2 U' T' D F2 R2
+U R r F2 Y2 D' T U B2 U F2 D' T' U B2 l2
