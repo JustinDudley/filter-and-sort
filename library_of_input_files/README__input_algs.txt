@@ -3,8 +3,8 @@ README -- input alg library
 
 
 On my local machine, the folder "library_of_input_algs" contains TWO FOLDERS:
-   - one is small
-   - one is huge
+   - one is small.
+   - one is huge.
 
 
 The small one is tracked by git.  It contains 72 files. 
