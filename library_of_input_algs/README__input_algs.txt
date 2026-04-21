@@ -15,13 +15,6 @@ It has the same 72 files, but containing 93 millions algs all told.
 These are the input algs I used in this python project.
 
 
-The complete set of 93 million algs can be found at:
-
-ababababababababababababa
-
-You should be able to download the whole folder of 72 complete alg lists there, if you would like to use them.
-Just fyi, their parent folder name is different from the name of the gitignored folder.
-
-
-
-
+To view or download the complete set of 93 million algs, go to my Alg Landing Page at:
+x0x0x0x0xx0x0x0x0x0xx0
+And look for 93 million algs --> Repo_1
