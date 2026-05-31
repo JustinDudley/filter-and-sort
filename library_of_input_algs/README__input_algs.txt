@@ -20,5 +20,5 @@ BUT THE ALGS SITTING IN THE INPUT FILE CURRENTLY, WHICH IS COPIED FROM A TESTING
 INPUT FILE, IS USEFUL. AND YOU CAN GRAB THE FULL SETS OF ALGS IF YOU WANT. SEE BELOW.
 
 To view or download the complete set of 93 million algs, go to my Alg Landing Page at:
-x0x0x0x0xx0x0x0x0x0xx0
+https://rebrand.ly/1371af
 And look for 93 million algs --> Repo_1
