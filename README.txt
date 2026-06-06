@@ -2,7 +2,7 @@ README
 
 This program is designed to evaluate no-parity-pochmann algs. It takes a list of algs as input, filters out those that are less finger-friendly, then sorts the remaining algs into categories and outputs that sorted list. 
 
-See my no-parity-pochmann YouTube video, https://youtu.be/jykhI4pyze4.
+See my no-parity-pochmann YouTube video, https://youtu.be/Kx_NlSuZaRA.
 
 The program will also filter and sort ANY alg list of any kind.  It works well most of the time.  It just might give occasional strange results, because it will try to divide the algs into different types of no-parity-pochmann alg and then apply slightly different filtering criteria to each, and sometimes that won't make any sense.
 
