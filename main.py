@@ -11,12 +11,13 @@ from methods__filtering.alg_contains_combo__edge_S_over15 import alg_contains_co
 from methods__filtering.alg_contains_combo__edge_S_rL_over14 import alg_contains_combo__edge_S_rL_over14
 from methods__filtering.alg_contains_combo__edge_over16 import alg_contains_combo__edge_over16
 from methods__filtering.contains_bad_turns import contains_bad_turns
-from methods__filtering.contains_both_T_and_S import contains_both_T_and_S
+from methods__filtering.contains_both_T_and_S_AND_T_plus_S_instances_exceed_2 import contains_both_T_and_S_AND_T_plus_S_instances_exceed_2
 from methods__filtering.contains_tri_turn__UD_FB_rl import contains_tri_turn__UD_FB_rl
 from methods__filtering.contains_T_not_in_UTU import contains_T_not_in_UTU
 from methods__filtering.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
+from methods__optional_filtering.alg_contains_combo__both_S_and_T import alg_contains_combo__both_S_and_T
 from methods__optional_filtering.alg_contains_combo__corner_LwithR_over17 import alg_contains_combo__corner_LwithR_over17
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_internalX_over17 import alg_contains_combo__corner_internalX_over17
@@ -65,6 +66,10 @@ This_combo_is_trash__20__INTENDED_FOR_NON_BD_TUNNELS__edge_T2_DL22_internalWCR_o
 this_combo_is_trash__14__INTENDED_FOR_NON_BD_TUNNELS__edge_LwithR_over15 = False    
 
 
+# BOOLEANS FOR OPTIONAL FILTERING that are ACTUALLY OPTIONAL (at least at this time)
+this_combo_is_trash__21__contains_both_S_and_T = False    
+
+
 
 
 
@@ -110,7 +115,8 @@ for alg in algs:
           algs_to_trash.append(alg)
           continue
 
-    if contains_both_T_and_S(alg):
+    # post-release:  This method ONLY eliminates TS algs if their total count exceeds 2. One T and one S is okay.
+    if contains_both_T_and_S_AND_T_plus_S_instances_exceed_2(alg):
           algs_to_trash.append(alg)
           continue
 
@@ -265,6 +271,13 @@ for alg in algs:
                 if alg_contains_combo__edge_T2_DL22_internalWCR_over14(alg_dict):
                       algs_to_trash.append(alg)
                       continue  
+
+
+    # KEEP:  Optional Rule 21 has been successfully tested.
+    if this_combo_is_trash__21__contains_both_S_and_T:
+          if alg_contains_combo__both_S_and_T(alg):
+            algs_to_trash.append(alg)
+            continue  
 
 
 

@@ -14,7 +14,11 @@ def sort_the_algs(algs):
 
     sorted_algs = sorted(algs, key=lambda alg: (
         "S" not in alg,  # ALL non-S algs at the top
-        not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udfb_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision (and are currently highlighted yellow in my spreadsheet's conditional formatting)
+        not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udfb_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision (and are currently highlighted yellow in my spreadsheet's conditional formatting). At this point I have sorted all algs into 3 categories:  Non-S, pure S (yellow on spreadsheet), S with complications
+        
+        # Probably put algs with B and b here. DOESN'T have B or b,
+        # Probably put algs with both S AND T here. DOESN'T have both S and T (on top),
+        
         "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udfb (eg. none with both Z and d), so this places ALL YorZ algs above ALL udfb algs
 
 
