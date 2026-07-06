@@ -12,12 +12,14 @@ from methods__filtering.alg_contains_combo__edge_S_rL_over14 import alg_contains
 from methods__filtering.alg_contains_combo__edge_over16 import alg_contains_combo__edge_over16
 from methods__filtering.contains_bad_turns import contains_bad_turns
 from methods__filtering.contains_both_T_and_S_AND_T_plus_S_instances_exceed_2 import contains_both_T_and_S_AND_T_plus_S_instances_exceed_2
+from methods__filtering.contains_more_than_two_B_turns import contains_more_than_two_B_turns
 from methods__filtering.contains_tri_turn__UD_FB_rl import contains_tri_turn__UD_FB_rl
 from methods__filtering.contains_T_not_in_UTU import contains_T_not_in_UTU
 from methods__filtering.contains_S_not_in_LSr import contains_S_not_in_LSr
 from methods__filtering.contains_internal_TY_or_ZT import contains_internal_TY_or_ZT
 from methods__filtering.contains_internal_SY_or_ZS import contains_internal_SY_or_ZS
 from methods__optional_filtering.alg_contains_combo__both_S_and_T import alg_contains_combo__both_S_and_T
+from methods__optional_filtering.alg_contains_combo__contains_B import alg_contains_combo__contains_B
 from methods__optional_filtering.alg_contains_combo__corner_LwithR_over17 import alg_contains_combo__corner_LwithR_over17
 from methods__optional_filtering.alg_contains_combo__corner_X_rL_over17 import alg_contains_combo__corner_X_rL_over17
 from methods__optional_filtering.alg_contains_combo__corner_internalX_over17 import alg_contains_combo__corner_internalX_over17
@@ -66,11 +68,10 @@ This_combo_is_trash__20__INTENDED_FOR_NON_BD_TUNNELS__edge_T2_DL22_internalWCR_o
 this_combo_is_trash__14__INTENDED_FOR_NON_BD_TUNNELS__edge_LwithR_over15 = False    
 
 
-# BOOLEANS FOR OPTIONAL FILTERING that are ACTUALLY OPTIONAL (at least at this time)
-this_combo_is_trash__21__contains_both_S_and_T = False    
-
-
-
+#JULY 2026
+# POST-RELEASE BOOLEANS FOR OPTIONAL FILTERING that are ACTUALLY OPTIONAL (at least at this time)
+this_combo_is_trash__21__contains_both_S_and_T = False  # But their total combined instances are still limited to 2 or fewer (in a different, non-optional rule)   
+this_combo_is_trash__22__contains_B = False    # But no more than 2 are allowed (in a different, non-optional rule)
 
 
 startTime = datetime.datetime.now()
@@ -95,9 +96,13 @@ for alg in algs:
 
 
     #  (1) BASELINE FILTERING
-    if contains_bad_turns(alg):
+    if contains_bad_turns(alg):  #post-release:  B and b are no longer bad turns! But their number is limited in a different filtering rule.
          algs_to_trash.append(alg)
          continue
+    
+    if contains_more_than_two_B_turns(alg):
+         algs_to_trash.append(alg)
+         continue       
 
     if contains_T_not_in_UTU(alg):
           algs_to_trash.append(alg)
@@ -279,6 +284,12 @@ for alg in algs:
             algs_to_trash.append(alg)
             continue  
 
+
+    # KEEP:  Optional Rule 22 has been successfully tested.
+    if this_combo_is_trash__22__contains_B:
+          if alg_contains_combo__contains_B(alg):
+            algs_to_trash.append(alg)
+            continue  
 
 
     # FILTERINGS CURRENTLY SET TO FALSE ARE BELOW

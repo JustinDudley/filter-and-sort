@@ -1,5 +1,6 @@
 
 from methods.helper_methods import does_alg_contain_rL, final_letter, first_letter_other_than_X, get_length_without_WCRs, number_of_ZY_pairs, number_of_ZY_sandwiches
+from methods__optional_filtering.alg_contains_combo__both_S_and_T import alg_contains_combo__both_S_and_T
 from variables.constants import YorZ_turns, udfb_turns, XorYorZ_turns
 
 
@@ -16,8 +17,9 @@ def sort_the_algs(algs):
         "S" not in alg,  # ALL non-S algs at the top
         not any(turn in alg for turn in XorYorZ_turns) and not any(turn in alg for turn in udfb_turns), # alg has neither  X,Y,Z  nor  u,d,b,f. The only algs like this will be in the subdivision that includes S turns. They will rise to the top of that subdivision (and are currently highlighted yellow in my spreadsheet's conditional formatting). At this point I have sorted all algs into 3 categories:  Non-S, pure S (yellow on spreadsheet), S with complications
         
-        # Probably put algs with B and b here. DOESN'T have B or b,
-        # Probably put algs with both S AND T here. DOESN'T have both S and T (on top),
+        # TWO post-release sorting rules:  Algs without B go on top; Algs that DON'T contain both S and t go on top
+        "B" not in alg and "b" not in alg,
+        not alg_contains_combo__both_S_and_T(alg),  
         
         "Y" in alg or "Z" in alg,  # There are NO algs with members in both YorZ AND udfb (eg. none with both Z and d), so this places ALL YorZ algs above ALL udfb algs
 
